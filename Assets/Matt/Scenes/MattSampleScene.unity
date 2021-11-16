@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 100
+  hingeSpringStrength: 10
   hingeRestAngle: 0
   hingeActivateAngle: -90
 --- !u!1 &880827970
