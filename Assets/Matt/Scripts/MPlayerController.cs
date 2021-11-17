@@ -23,6 +23,7 @@ public class MPlayerController : MonoBehaviour
         vInput = Input.GetAxis("Vertical");
 
         transform.position = controlRb.worldCenterOfMass;
+
     }
 
     private void FixedUpdate()

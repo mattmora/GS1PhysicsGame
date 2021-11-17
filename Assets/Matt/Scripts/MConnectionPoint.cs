@@ -67,7 +67,7 @@ public class MConnectionPoint : MonoBehaviour
 
                 joint.enableCollision = true;
                 joint.autoConfigureConnectedAnchor = false;
-                joint.anchor = transform.localPosition;
+                joint.anchor = transform.localPosition + otherConnectionPoint.transform.localPosition;
                 joint.connectedBody = otherBone.rb;
                 joint.connectedAnchor = otherConnectionPoint.transform.localPosition;
 
