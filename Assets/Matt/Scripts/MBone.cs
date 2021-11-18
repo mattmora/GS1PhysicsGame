@@ -12,6 +12,8 @@ public class MBone : MonoBehaviour
     // Child connection points will add themselves to this list at runtime
     public List<MConnectionPoint> connectionPoints = new List<MConnectionPoint>();
 
+    MPlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {

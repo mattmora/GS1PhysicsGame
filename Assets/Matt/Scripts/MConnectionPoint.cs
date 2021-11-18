@@ -12,13 +12,19 @@ public class MConnectionPoint : MonoBehaviour
 
     public float hingeRestAngle;
     public float hingeActivateAngle;
-    
+
+    bool ignoreConnections = false;
+
+    MBone connectedBone;
+
     // Start is called before the first frame update
     void Start()
     {
         bone = transform.GetComponentInParent<MBone>();
         bone.connectionPoints.Add(this);
         gameObject.tag = "Connection";
+
+        transform.Find("ConnectionReference").gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,10 +50,16 @@ public class MConnectionPoint : MonoBehaviour
             hingeSpring.targetPosition = hingeRestAngle;
             joint.spring = hingeSpring;
         }
+
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.X))
+        {
+            Disconnect();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (ignoreConnections) return;
         if (other.gameObject.tag == "Connection")
         {
             MBone otherBone = other.gameObject.GetComponentInParent<MBone>();
@@ -67,13 +79,31 @@ public class MConnectionPoint : MonoBehaviour
 
                 joint.enableCollision = true;
                 joint.autoConfigureConnectedAnchor = false;
-                joint.anchor = transform.localPosition + otherConnectionPoint.transform.localPosition;
+                joint.anchor = transform.localPosition;
                 joint.connectedBody = otherBone.rb;
                 joint.connectedAnchor = otherConnectionPoint.transform.localPosition;
 
                 joint.useSpring = true;
 
+                connectedBone = otherBone;
+                ignoreConnections = true;
             }
         }
+    }
+
+    public void Disconnect()
+    {
+        if (joint == null) return;
+
+        Destroy(joint);
+        connectedBone.attachedToPlayer = false;
+        connectedBone = null;
+        StartCoroutine(Cooldown());
+    }
+
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        ignoreConnections = false;
     }
 }
