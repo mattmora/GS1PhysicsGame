@@ -72,6 +72,7 @@ public class MConnectionPoint : MonoBehaviour
                 otherBone.transform.rotation = transform.rotation;
 
                 otherBone.attachedToPlayer = true;
+                otherConnectionPoint.ignoreConnections = true;
                 joint = bone.gameObject.AddComponent<HingeJoint>();
 
                 joint.axis = Vector3.right;
