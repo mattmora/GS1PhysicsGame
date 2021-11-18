@@ -88,6 +88,8 @@ public class MConnectionPoint : MonoBehaviour
 
                 connectedBone = otherBone;
                 ignoreConnections = true;
+
+                connectedBone.transform.SetParent(bone.transform);
             }
         }
     }
@@ -97,6 +99,7 @@ public class MConnectionPoint : MonoBehaviour
         if (joint == null) return;
 
         Destroy(joint);
+        connectedBone.transform.SetParent(null);
         connectedBone.attachedToPlayer = false;
         connectedBone = null;
         StartCoroutine(Cooldown());
