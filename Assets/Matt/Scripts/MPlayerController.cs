@@ -17,9 +17,14 @@ public class MPlayerController : MonoBehaviour
 
     Camera mainCamera;
 
-    List<MBone> playerBones;
+    public List<MBone> playerBones;
 
     public float smoothing;
+
+    private void Awake()
+    {
+        playerBones = new List<MBone>();
+    }
 
     // Start is called before the first frame update
     void Start()

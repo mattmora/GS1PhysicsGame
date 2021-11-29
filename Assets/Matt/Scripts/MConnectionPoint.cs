@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MConnectionPoint : MonoBehaviour
 {
@@ -8,14 +9,24 @@ public class MConnectionPoint : MonoBehaviour
 
     HingeJoint joint;
 
-    public float hingeSpringStrength = 100f;
+    public float hingeSpringActiveStrength = 100f;
+    public float hingeSpringRestStrength = 0f;
 
-    public float hingeRestAngle;
     public float hingeActivateAngle;
+    public float hingeRestAngle;
 
     bool ignoreConnections = false;
 
     MBone connectedBone;
+
+    // Hacky, think of these two lists as a Dictionary
+    // bones are used to call actions at the same index
+    // (Unity does serialize Dictionaries by default) 
+    public List<MBone> bones;
+    public List<UnityEvent> activeActions;
+    public List<UnityEvent> restActions;
+    public List<float> boneHingeSpringStrength;
+    public List<float> boneAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -30,31 +41,44 @@ public class MConnectionPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (joint == null) return;
+        if (connectedBone == null) return;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (bones.Contains(connectedBone))
         {
-            //joint.useSpring = true;
-            JointSpring hingeSpring = joint.spring;
-            hingeSpring.spring = hingeSpringStrength;
-            hingeSpring.damper = 0.1f;
-            hingeSpring.targetPosition = hingeActivateAngle;
-            joint.spring = hingeSpring;
-        }
-        else
-        {
-            //joint.useSpring = false;
-            JointSpring hingeSpring = joint.spring;
-            hingeSpring.spring = hingeSpringStrength;
-            hingeSpring.damper = 0.1f;
-            hingeSpring.targetPosition = hingeRestAngle;
-            joint.spring = hingeSpring;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                activeActions[bones.IndexOf(connectedBone)].Invoke();
+            }
+            else
+            {
+                restActions[bones.IndexOf(connectedBone)].Invoke();
+            }
         }
 
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.X))
         {
             Disconnect();
         }
+    }
+
+    public void ActivateHinge()
+    {
+        //joint.useSpring = true;
+        JointSpring hingeSpring = joint.spring;
+        hingeSpring.spring = hingeSpringActiveStrength;
+        hingeSpring.damper = 0.1f;
+        hingeSpring.targetPosition = hingeActivateAngle;
+        joint.spring = hingeSpring;
+    }
+
+    public void DeactivateHinge()
+    {
+        //joint.useSpring = false;
+        JointSpring hingeSpring = joint.spring;
+        hingeSpring.spring = hingeSpringRestStrength;
+        hingeSpring.damper = 0.1f;
+        hingeSpring.targetPosition = hingeRestAngle;
+        joint.spring = hingeSpring;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,6 +97,9 @@ public class MConnectionPoint : MonoBehaviour
 
                 otherBone.attachedToPlayer = true;
                 otherConnectionPoint.ignoreConnections = true;
+
+                connectedBone = otherBone;
+
                 joint = bone.gameObject.AddComponent<HingeJoint>();
 
                 joint.axis = Vector3.right;
@@ -86,7 +113,12 @@ public class MConnectionPoint : MonoBehaviour
 
                 joint.useSpring = true;
 
-                connectedBone = otherBone;
+                JointSpring hingeSpring = joint.spring;
+                hingeSpring.spring = boneHingeSpringStrength[bones.IndexOf(connectedBone)];
+                hingeSpring.damper = 0.1f;
+                hingeSpring.targetPosition = boneAngle[bones.IndexOf(connectedBone)];
+                joint.spring = hingeSpring;
+
                 ignoreConnections = true;
 
                 connectedBone.transform.SetParent(bone.transform);
@@ -96,7 +128,7 @@ public class MConnectionPoint : MonoBehaviour
 
     public void Disconnect()
     {
-        if (joint == null) return;
+        if (connectedBone == null) return;
 
         Destroy(joint);
         connectedBone.transform.SetParent(null);
