@@ -122,7 +122,7 @@ public class MConnectionPoint : MonoBehaviour
                 joint.axis = Vector3.right;
                 //joint.swingAxis = new Vector3(1f, 0f, 1f);
 
-                joint.enableCollision = true;
+                //joint.enableCollision = true;
                 joint.autoConfigureConnectedAnchor = false;
                 joint.anchor = transform.localPosition;
                 joint.connectedBody = otherBone.rb;
