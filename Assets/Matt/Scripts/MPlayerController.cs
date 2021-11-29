@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MPlayerController : MonoBehaviour
 {
+    public MBone skull;
     public Rigidbody controlRb;
 
     [SerializeField] float moveForceMagnitude = 1f;
@@ -59,26 +60,18 @@ public class MPlayerController : MonoBehaviour
 
         controlRb.constraints = RigidbodyConstraints.None;
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
-        {    
-            if (Mathf.Abs(hInputRaw) > 0.01f)
+        {
+            if (!skull.connectionPoints[0].Ability())
             {
-                // Vector3 rot = controlRb.transform.InverseTransformDirection((hInput * transform.up));
-                controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
-                // Vector3 force = (hInput * transform.up);
-                // force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
-                // controlRb.AddTorque(force);
+                Freeze();
             }
-            controlRb.constraints = RigidbodyConstraints.FreezeRotation;
         }
         else
         {
-            Vector3 torque = (vInput * transform.right + hInput * -transform.forward);
-            torque = Vector3.ClampMagnitude(torque, 1f) * torqueForceMagnitude * Time.fixedDeltaTime;
-            controlRb.AddTorque(torque);
-
-            Vector3 force = (vInput * transform.forward + hInput * transform.right);
-            force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
-            controlRb.AddForce(force);
+            if (!skull.connectionPoints[0].Basic())
+            {
+                Roll();
+            }
         }
 
         SmoothPosition();
@@ -92,5 +85,29 @@ public class MPlayerController : MonoBehaviour
             effectiveSmoothing = 0f;
         }
         transform.position = transform.position * smoothing + controlRb.worldCenterOfMass * (1f - smoothing); 
+    }
+
+    public void Freeze()
+    {
+        if (Mathf.Abs(hInputRaw) > 0.01f)
+        {
+            // Vector3 rot = controlRb.transform.InverseTransformDirection((hInput * transform.up));
+            controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
+            // Vector3 force = (hInput * transform.up);
+            // force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
+            // controlRb.AddTorque(force);
+        }
+        controlRb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    public void Roll()
+    {
+        Vector3 torque = (vInput * transform.right + hInput * -transform.forward);
+        torque = Vector3.ClampMagnitude(torque, 1f) * torqueForceMagnitude * Time.fixedDeltaTime;
+        controlRb.AddTorque(torque);
+
+        Vector3 force = (vInput * transform.forward + hInput * transform.right);
+        force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
+        controlRb.AddForce(force);
     }
 }

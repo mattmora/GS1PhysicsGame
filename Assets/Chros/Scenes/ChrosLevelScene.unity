@@ -877,9 +877,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-
-  m_RootOrder: 2
-
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &58698344
 Rigidbody:
@@ -1318,10 +1316,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-
-  m_RootOrder: 1
-
-  m_LocalEulerAnglesHint: {x: 40, y: 20, z: 10}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74611287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,9 +1363,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 0
-  hingeRestAngle: 0
+  hingeSpringActiveStrength: 100
+  hingeSpringRestStrength: 0
   hingeActivateAngle: 0
+  hingeRestAngle: 0
+  bones: []
+  activeActions: []
+  restActions: []
+  boneHingeSpringStrength: []
+  boneAngle: []
 --- !u!135 &74611290
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1893,65 +1895,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!1001 &92236490
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_RootOrder
-
-      value: 0
-
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.0006395659
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9544284
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.861
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e09600b55592423459df977c51311a10, type: 3}
-      propertyPath: m_Name
-      value: anatomy_complete_human_skeleton
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e09600b55592423459df977c51311a10, type: 3}
 --- !u!1001 &107640823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3029,7 +2972,7 @@ Transform:
   - {fileID: 772753364}
   - {fileID: 1442506999}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251687982
 GameObject:
@@ -3114,10 +3057,8 @@ Transform:
   m_Children:
   - {fileID: 2109001980}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 11
-
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &251687986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3245,10 +3186,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-
-  m_RootOrder: 3
-
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &254272611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4031,9 +3970,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 0
-  hingeRestAngle: 0
+  hingeSpringActiveStrength: 100
+  hingeSpringRestStrength: 0
   hingeActivateAngle: 0
+  hingeRestAngle: 0
+  bones: []
+  activeActions: []
+  restActions: []
+  boneHingeSpringStrength: []
+  boneAngle: []
 --- !u!135 &352301697
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6059,10 +6004,8 @@ Transform:
   m_Children:
   - {fileID: 1095913911}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 12
-
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &499214708
 Mesh:
   m_ObjectHideFlags: 0
@@ -15014,10 +14957,8 @@ Transform:
   - {fileID: 1142626396}
   - {fileID: 74611288}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 7
-
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -71.712}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &905074066
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -16467,9 +16408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-
   m_RootOrder: 9
-
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142626395
 GameObject:
@@ -16516,9 +16455,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 0
-  hingeRestAngle: 0
+  hingeSpringActiveStrength: 100
+  hingeSpringRestStrength: 0
   hingeActivateAngle: 0
+  hingeRestAngle: 0
+  bones: []
+  activeActions: []
+  restActions: []
+  boneHingeSpringStrength: []
+  boneAngle: []
 --- !u!135 &1142626398
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17230,9 +17175,7 @@ Transform:
   - {fileID: 1706431418}
   - {fileID: 1356086860}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 14
-
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1285780242
 Mesh:
@@ -21487,9 +21430,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 0
-  hingeRestAngle: 0
+  hingeSpringActiveStrength: 100
+  hingeSpringRestStrength: 0
   hingeActivateAngle: 0
+  hingeRestAngle: 0
+  bones: []
+  activeActions: []
+  restActions: []
+  boneHingeSpringStrength: []
+  boneAngle: []
 --- !u!135 &1324152828
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21564,9 +21513,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 100
-  hingeRestAngle: 0
+  hingeSpringActiveStrength: 100
+  hingeSpringRestStrength: 0
   hingeActivateAngle: 90
+  hingeRestAngle: 0
+  bones: []
+  activeActions: []
+  restActions: []
+  boneHingeSpringStrength: []
+  boneAngle: []
 --- !u!135 &1324760764
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21966,7 +21921,7 @@ Transform:
   - {fileID: 1675337600}
   - {fileID: 397719911}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356086859
 GameObject:
@@ -22326,9 +22281,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec31101dc106ba544943d282bb679db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hingeSpringStrength: 100
-  hingeRestAngle: 0
+  hingeSpringActiveStrength: 100
+  hingeSpringRestStrength: 0
   hingeActivateAngle: 90
+  hingeRestAngle: 0
+  bones: []
+  activeActions: []
+  restActions: []
+  boneHingeSpringStrength: []
+  boneAngle: []
 --- !u!135 &1428778712
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23208,10 +23169,8 @@ Transform:
   - {fileID: 1324152826}
   - {fileID: 352301695}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 8
-
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -71.712}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1512401139
 GameObject:
   m_ObjectHideFlags: 0
@@ -23339,10 +23298,8 @@ Transform:
   m_Children:
   - {fileID: 954277443}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 10
-
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1538691749
 Mesh:
   m_ObjectHideFlags: 0
@@ -23540,10 +23497,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-
-  m_RootOrder: 5
-
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1550932024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30415,6 +30370,7 @@ MonoBehaviour:
   hInputRaw: 0
   vInputRaw: 0
   rotationSpeed: 100
+  playerBones: []
   smoothing: 0.92
 --- !u!4 &1922880022
 Transform:
@@ -30428,9 +30384,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-
-  m_RootOrder: 4
-
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1929488587
 Mesh:
@@ -31203,10 +31157,8 @@ Transform:
   - {fileID: 1324760762}
   - {fileID: 1428778710}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 6
-
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -71.712}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1973179864
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31707,9 +31659,7 @@ Transform:
   - {fileID: 161421524}
   - {fileID: 4744580553480592132}
   m_Father: {fileID: 0}
-
-  m_RootOrder: 13
-
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &9112189348247929922
 MeshRenderer:

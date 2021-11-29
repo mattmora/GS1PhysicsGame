@@ -28,6 +28,9 @@ public class MConnectionPoint : MonoBehaviour
     public List<float> boneHingeSpringStrength;
     public List<float> boneAngle;
 
+    public List<UnityEvent> ability;
+    public List<UnityEvent> basic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,20 @@ public class MConnectionPoint : MonoBehaviour
         {
             Disconnect();
         }
+    }
+
+    public bool Ability()
+    {
+        if (connectedBone == null) return false;
+        ability[bones.IndexOf(connectedBone)].Invoke();
+        return true;
+    }
+
+    public bool Basic()
+    {
+        if (connectedBone == null) return false;
+        basic[bones.IndexOf(connectedBone)].Invoke();
+        return true;
     }
 
     public void ActivateHinge()
