@@ -93,3 +93,4 @@ fmod_editor.log
 .DS_Store
 
 .vscode/
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
