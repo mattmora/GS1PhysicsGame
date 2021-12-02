@@ -137,11 +137,13 @@ public class MConnectionPoint : MonoBehaviour
 
                 joint.useSpring = true;
 
+                /*
                 JointSpring hingeSpring = joint.spring;
                 hingeSpring.spring = boneHingeSpringStrength[bones.IndexOf(connectedBone)];
                 hingeSpring.damper = 0.1f;
                 hingeSpring.targetPosition = boneAngle[bones.IndexOf(connectedBone)];
                 joint.spring = hingeSpring;
+                */
 
                 ignoreConnections = true;
 
