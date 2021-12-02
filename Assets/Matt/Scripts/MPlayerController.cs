@@ -16,6 +16,8 @@ public class MPlayerController : MonoBehaviour
 
     [SerializeField] float rotationSpeed = 100f;
 
+    public float uprightForce;
+
     Camera mainCamera;
 
     public List<MBone> playerBones;
@@ -61,18 +63,25 @@ public class MPlayerController : MonoBehaviour
         controlRb.constraints = RigidbodyConstraints.None;
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
         {
-            if (!skull.connectionPoints[0].Ability())
+            if (Input.GetKey(KeyCode.Space))
             {
                 Freeze();
             }
-        }
-        else
-        {
-            if (!skull.connectionPoints[0].Basic())
-            {
-                Roll();
+            //else if (!skull.connectionPoints[0].Ability())
+            { 
+                Upright();
             }
+           
         }
+        //else
+        //{
+        //    if (!skull.connectionPoints[0].Basic())
+        //    {
+                Roll();
+        //    }
+        //}
+
+        
 
         SmoothPosition();
     }
@@ -89,15 +98,19 @@ public class MPlayerController : MonoBehaviour
 
     public void Freeze()
     {
-        if (Mathf.Abs(hInputRaw) > 0.01f)
+        if (Mathf.Abs(hInputRaw) > 0.01f || Mathf.Abs(vInputRaw) > 0.01f)
         {
-            // Vector3 rot = controlRb.transform.InverseTransformDirection((hInput * transform.up));
-            controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
-            // Vector3 force = (hInput * transform.up);
-            // force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
-            // controlRb.AddTorque(force);
+            return;
+            //controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
         }
         controlRb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    public void Upright()
+    {
+        var rot = Quaternion.FromToRotation(skull.connectionPoints[0].transform.forward, Vector3.up);
+        
+        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce - (controlRb.angularVelocity * Time.fixedDeltaTime) * uprightForce);
     }
 
     public void Roll()
