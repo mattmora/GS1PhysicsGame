@@ -33,6 +33,8 @@ public class IRespawn : MonoBehaviour
                 else break;
             }
             other.transform.position = spawnPoints[index].position;
+            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
         else if (other.gameObject.tag == "Foot")
         {
