@@ -42,8 +42,8 @@ public class MConnectionPoint : MonoBehaviour
 
         transform.Find("ConnectionReference").gameObject.SetActive(false);
 
-        if (transform.parent.parent != null)
-            inputManager = transform.parent.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
+        //if (transform.parent.parent != null)
+            //inputManager = transform.parent.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
     }
 
     // Update is called once per frame

@@ -56,6 +56,7 @@ public class IInputManager : MonoBehaviour
         obj.transform.Find("Player").gameObject.GetComponent<MPlayerController>().inputManager = this;
         pi.camera.gameObject.GetComponent<MDragMouseOrbit>().target = obj.transform.Find("Player");
         obj.transform.position = obj.transform.position - new Vector3((id-1) * 2, 0, 0);
+        obj.transform.Find("skull").Find("SkullConnectionPoint").gameObject.GetComponent<MConnectionPoint>().inputManager = this;
         //obj.transform.Find("Main Camera").gameObject.GetComponent<MDragMouseOrbit>().inputManager = this;
         //obj.transform.Find("Main Camera").gameObject.GetComponent<MMouseLock>().inputManager = this;
     }

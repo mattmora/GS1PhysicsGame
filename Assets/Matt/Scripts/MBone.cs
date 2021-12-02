@@ -22,7 +22,7 @@ public class MBone : MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player").GetComponent<MPlayerController>();
         //player.playerBones.Add(this);
 
-        gameObject.tag = "Bone";
+        //gameObject.tag = "Bone";
     }
 
     // Update is called once per frame

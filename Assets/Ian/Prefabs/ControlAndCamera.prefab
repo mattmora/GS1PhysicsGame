@@ -55,6 +55,7 @@ MonoBehaviour:
   jump: 0
   detach: 0
   playerAndCam: {fileID: 1307947036598222377, guid: e997ddc4dd8b9684a88985763a938da4, type: 3}
+  id: 0
 --- !u!114 &616898570764462347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,8 +329,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   distance: 2
-  xSpeed: 30
-  ySpeed: 30
+  xSpeed: 5
+  ySpeed: 10
   yMinLimit: 10
   yMaxLimit: 70
   distanceMin: 2

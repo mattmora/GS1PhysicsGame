@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Connection
   - Bone
+  - Skull
+  - Foot
   layers:
   - Default
   - TransparentFX
