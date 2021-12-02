@@ -51,17 +51,19 @@ public class MConnectionPoint : MonoBehaviour
     {
         if (connectedBone == null) return;
 
-        if (bones.Contains(connectedBone))
-        {
+        //if (bones.Contains(connectedBone))
+        //{
             if (inputManager.jump)
             {
-                activeActions[bones.IndexOf(connectedBone)].Invoke();
+                //activeActions[bones.IndexOf(connectedBone)].Invoke();
+                ActivateHinge();
             }
             else
             {
-                restActions[bones.IndexOf(connectedBone)].Invoke();
+                //restActions[bones.IndexOf(connectedBone)].Invoke();
+                DeactivateHinge();
             }
-        }
+        //}
 
         if (inputManager.detach)
         {

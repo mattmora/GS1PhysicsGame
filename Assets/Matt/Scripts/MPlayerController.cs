@@ -77,12 +77,13 @@ public class MPlayerController : MonoBehaviour
         //if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
         if (isfrozen)
         {
-            if (Input.GetKey(KeyCode.Space))
+            //if (Input.GetKey(KeyCode.Space))
+            if (inputManager.jump)
             {
                 Freeze();
             }
             //else if (!skull.connectionPoints[0].Ability())
-            { 
+            else { 
                 Upright();
             }
            
