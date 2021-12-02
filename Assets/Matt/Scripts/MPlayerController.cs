@@ -24,6 +24,9 @@ public class MPlayerController : MonoBehaviour
 
     public float smoothing;
 
+    public IInputManager inputManager;
+    [SerializeField] bool isfrozen = false;
+
     private void Awake()
     {
         playerBones = new List<MBone>();
@@ -33,20 +36,30 @@ public class MPlayerController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        inputManager = GetComponent<IInputManager>();
+        GameObject[] bones = GameObject.FindGameObjectsWithTag("Bone");
+        foreach (GameObject b in bones)
+        {
+            playerBones.Add(b.GetComponent<MBone>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get movement inputs
-        hInput = Input.GetAxis("Horizontal");
-        vInput = Input.GetAxis("Vertical");
+        //hInput = Input.GetAxis("Horizontal");
+        //vInput = Input.GetAxis("Vertical");
+        hInput = inputManager.movement.x;
+        vInput = inputManager.movement.y;
 
         // Get inputs without smoothing for checking whether keys are pressed
-        hInputRaw = Input.GetAxisRaw("Horizontal");
-        vInputRaw = Input.GetAxisRaw("Vertical");
+        //hInputRaw = Input.GetAxisRaw("Horizontal");
+        //vInputRaw = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.R))
+        isfrozen = inputManager.freeze;
+
+        if (inputManager.restart)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -61,7 +74,8 @@ public class MPlayerController : MonoBehaviour
         //controlRb.AddForce(force);
 
         controlRb.constraints = RigidbodyConstraints.None;
-        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
+        //if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
+        if (isfrozen)
         {
             if (Input.GetKey(KeyCode.Space))
             {
@@ -98,7 +112,8 @@ public class MPlayerController : MonoBehaviour
 
     public void Freeze()
     {
-        if (Mathf.Abs(hInputRaw) > 0.01f || Mathf.Abs(vInputRaw) > 0.01f)
+        //if (Mathf.Abs(hInputRaw) > 0.01f)
+        if (Mathf.Abs(hInput) > 0.01f)
         {
             return;
             //controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);

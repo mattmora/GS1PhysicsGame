@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine;
 using System.Collections;
 
 public class MDragMouseOrbit : MonoBehaviour
@@ -18,6 +17,9 @@ public class MDragMouseOrbit : MonoBehaviour
     float velocityX = 0.0f;
     float velocityY = 0.0f;
     // Use this for initialization
+
+    public IInputManager inputManager;
+
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
@@ -28,6 +30,8 @@ public class MDragMouseOrbit : MonoBehaviour
         {
             GetComponent<Rigidbody>().freezeRotation = true;
         }
+
+        inputManager = transform.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
     }
     void LateUpdate()
     {
@@ -35,8 +39,8 @@ public class MDragMouseOrbit : MonoBehaviour
         {
             //if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
             {
-                velocityX += xSpeed * Input.GetAxis("Mouse X") * distance * 0.02f;
-                velocityY += ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
+                velocityX += xSpeed * inputManager.mouseX * distance * 0.02f;
+                velocityY += ySpeed * inputManager.mouseY * 0.02f;
             }
             rotationYAxis += velocityX;
             rotationXAxis -= velocityY;
@@ -45,7 +49,7 @@ public class MDragMouseOrbit : MonoBehaviour
             Quaternion toRotation = Quaternion.Euler(rotationXAxis, rotationYAxis, 0);
             Quaternion rotation = toRotation;
 
-            distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+            //distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
             RaycastHit hit;
             //if (Physics.Linecast(target.position, transform.position, out hit))
             //{
