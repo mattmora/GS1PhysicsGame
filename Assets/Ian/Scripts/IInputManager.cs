@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class IInputManager : MonoBehaviour
 {
@@ -15,16 +16,48 @@ public class IInputManager : MonoBehaviour
     public bool jump = false;
     public bool detach = false;
 
+    public GameObject playerAndCam;
+    private PlayerInput pi;
+
+    public int id;
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        createPlayer();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        DontDestroyOnLoad(transform.parent.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         restart = false;
+        pi = GetComponent<PlayerInput>();
+        id = PlayerInputManager.instance.playerCount;
+        createPlayer();
+        //Debug.Log(id);
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(movement);
+    }
+
+    private void createPlayer()
+    {
+        Debug.Log(id);
+        GameObject obj = Instantiate(playerAndCam);
+        //pi.camera = obj.transform.GetChild(1).GetComponent<Camera>();
+        obj.transform.Find("Player").gameObject.GetComponent<MPlayerController>().inputManager = this;
+        pi.camera.gameObject.GetComponent<MDragMouseOrbit>().target = obj.transform.Find("Player");
+        obj.transform.position = obj.transform.position - new Vector3((id-1) * 2, 0, 0);
+        //obj.transform.Find("Main Camera").gameObject.GetComponent<MDragMouseOrbit>().inputManager = this;
+        //obj.transform.Find("Main Camera").gameObject.GetComponent<MMouseLock>().inputManager = this;
     }
 
     public void onMove(InputAction.CallbackContext ctx)

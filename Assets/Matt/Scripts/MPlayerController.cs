@@ -36,7 +36,7 @@ public class MPlayerController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        inputManager = GetComponent<IInputManager>();
+        //inputManager = GetComponent<IInputManager>();
         GameObject[] bones = GameObject.FindGameObjectsWithTag("Bone");
         foreach (GameObject b in bones)
         {

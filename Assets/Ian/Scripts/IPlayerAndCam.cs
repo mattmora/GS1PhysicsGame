@@ -10,6 +10,6 @@ public class IPlayerAndCam : MonoBehaviour
     private void Awake()
     {
         pim = GameObject.Find("PlayerInputManager").GetComponent<PlayerInputManager>();
-        transform.position = transform.position - new Vector3((pim.playerCount - 1) * 2, 0, 0);
+        //transform.position = transform.position - new Vector3((pim.playerCount - 1) * 2, 0, 0);
     }
 }
