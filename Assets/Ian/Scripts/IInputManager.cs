@@ -18,7 +18,7 @@ public class IInputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        restart = false;
     }
 
     // Update is called once per frame

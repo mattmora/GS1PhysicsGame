@@ -61,6 +61,7 @@ public class MPlayerController : MonoBehaviour
 
         if (inputManager.restart)
         {
+            inputManager.restart = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
