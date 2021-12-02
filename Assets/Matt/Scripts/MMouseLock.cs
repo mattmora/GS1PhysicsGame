@@ -5,15 +5,22 @@ public class MMouseLock : MonoBehaviour
 {
     public KeyCode escapeKey = KeyCode.Escape;
 
+    public IInputManager inputManager;
+
+    private void Start()
+    {
+        inputManager = transform.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
+    }
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (inputManager.LMB)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
-        if (Input.GetKeyDown(escapeKey))
+        if (inputManager.ESC)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

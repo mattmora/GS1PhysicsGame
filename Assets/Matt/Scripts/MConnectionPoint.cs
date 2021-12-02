@@ -31,6 +31,8 @@ public class MConnectionPoint : MonoBehaviour
     public List<UnityEvent> ability;
     public List<UnityEvent> basic;
 
+    public IInputManager inputManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,9 @@ public class MConnectionPoint : MonoBehaviour
         gameObject.tag = "Connection";
 
         transform.Find("ConnectionReference").gameObject.SetActive(false);
+
+        if (transform.parent.parent != null)
+            inputManager = transform.parent.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
     }
 
     // Update is called once per frame
@@ -48,7 +53,7 @@ public class MConnectionPoint : MonoBehaviour
 
         if (bones.Contains(connectedBone))
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (inputManager.jump)
             {
                 activeActions[bones.IndexOf(connectedBone)].Invoke();
             }
@@ -58,7 +63,7 @@ public class MConnectionPoint : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.X))
+        if (inputManager.detach)
         {
             Disconnect();
         }
