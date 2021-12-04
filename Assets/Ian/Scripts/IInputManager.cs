@@ -21,9 +21,16 @@ public class IInputManager : MonoBehaviour
 
     public int id;
 
+    public GameObject fakeStuff;
+
+    //public bool flag;
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        //if (!flag)
+        //if (fakeStuff != null) Destroy(fakeStuff);
         createPlayer();
+        //}
     }
 
     private void OnEnable()
@@ -38,8 +45,11 @@ public class IInputManager : MonoBehaviour
         restart = false;
         pi = GetComponent<PlayerInput>();
         id = PlayerInputManager.instance.playerCount;
+        //fakeStuff = GameObject.Find("FakeStuff");
         createPlayer();
+
         //Debug.Log(id);
+        
     }
 
     // Update is called once per frame
@@ -50,6 +60,9 @@ public class IInputManager : MonoBehaviour
 
     private void createPlayer()
     {
+        fakeStuff = GameObject.Find("FakeStuff");
+        if (fakeStuff != null) Destroy(fakeStuff);
+
         Debug.Log(id);
         GameObject obj = Instantiate(playerAndCam);
         //pi.camera = obj.transform.GetChild(1).GetComponent<Camera>();
@@ -59,6 +72,32 @@ public class IInputManager : MonoBehaviour
         obj.transform.Find("skull").Find("SkullConnectionPoint").gameObject.GetComponent<MConnectionPoint>().inputManager = this;
         //obj.transform.Find("Main Camera").gameObject.GetComponent<MDragMouseOrbit>().inputManager = this;
         //obj.transform.Find("Main Camera").gameObject.GetComponent<MMouseLock>().inputManager = this;
+
+        if (transform.parent.Find("StartCam") == null)
+        {
+            //if (!transform.Find("Main Camera").parent.gameObject.activeSelf)
+            //{
+                GameObject startCam = GameObject.Find("StartCam");
+                if (startCam != null && (startCam.transform.parent == null))
+                {
+                    MDragMouseOrbit md = startCam.GetComponent<MDragMouseOrbit>();
+                    md.target = obj.transform.Find("Player");
+                    md.inputManager = this;
+                    MMouseLock mm = startCam.GetComponent<MMouseLock>();
+                    mm.inputManager = this;
+                    startCam.transform.SetParent(transform.parent);
+                    pi.camera = startCam.GetComponent<Camera>();
+                }
+                else
+                {
+                    transform.parent.Find("Main Camera").gameObject.SetActive(true);
+                }
+            //}
+        }
+        //else
+        //{
+            
+        //}
     }
 
     public void onMove(InputAction.CallbackContext ctx)

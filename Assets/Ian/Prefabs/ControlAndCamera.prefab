@@ -56,6 +56,7 @@ MonoBehaviour:
   detach: 0
   playerAndCam: {fileID: 1307947036598222377, guid: e997ddc4dd8b9684a88985763a938da4, type: 3}
   id: 0
+  fakeStuff: {fileID: 0}
 --- !u!114 &616898570764462347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,13 +244,14 @@ GameObject:
   - component: {fileID: 5866676534553040019}
   - component: {fileID: 5866676534553040016}
   - component: {fileID: 5866676534553040023}
+  - component: {fileID: 3528255449920156066}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5866676534553040017
 Transform:
   m_ObjectHideFlags: 0
@@ -257,8 +259,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5866676534553040044}
-  m_LocalRotation: {x: 0.25898778, y: -0, z: -0, w: 0.96588063}
-  m_LocalPosition: {x: 0, y: 0.8698158, z: -1.2770729}
+  m_LocalRotation: {x: 0.2589878, y: 0, z: 0, w: 0.96588063}
+  m_LocalPosition: {x: -1.099753, y: 53.53617, z: -35.044216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7379581106495986752}
@@ -351,6 +353,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escapeKey: 27
   inputManager: {fileID: 3403616975308291840}
+--- !u!114 &3528255449920156066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866676534553040044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392b8ca8b11728f4c95479f83b939a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  mrs: []
+  transparancy: 0.4
 --- !u!1 &7379581106495986759
 GameObject:
   m_ObjectHideFlags: 0

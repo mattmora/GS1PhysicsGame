@@ -14,6 +14,8 @@ public class MMouseLock : MonoBehaviour
 
     void Update()
     {
+        if (inputManager == null) return;
+
         if (inputManager.LMB)
         {
             Cursor.lockState = CursorLockMode.Locked;
