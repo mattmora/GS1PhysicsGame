@@ -87,15 +87,13 @@ public class MPlayerController : MonoBehaviour
             else { 
                 Upright();
             }
-           
+            Pivot();
+            //Roll();
         }
-        //else
-        //{
-        //    if (!skull.connectionPoints[0].Basic())
-        //    {
-                Roll();
-        //    }
-        //}
+        else
+        {
+            Roll();
+        }
 
         
 
@@ -115,11 +113,11 @@ public class MPlayerController : MonoBehaviour
     public void Freeze()
     {
         //if (Mathf.Abs(hInputRaw) > 0.01f)
-        if (Mathf.Abs(hInput) > 0.01f)
-        {
-            return;
+        //if (Mathf.Abs(hInput) > 0.01f)
+        //{
+            //return;
             //controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
-        }
+        //}
         controlRb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
@@ -139,5 +137,17 @@ public class MPlayerController : MonoBehaviour
         Vector3 force = (vInput * transform.forward + hInput * transform.right);
         force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
         controlRb.AddForce(force);
+    }
+
+    public void Pivot()
+    {
+        //Vector3 torque = (vInput * transform.right + hInput * -transform.forward);
+        //torque = Vector3.ClampMagnitude(torque, 1f) * -torqueForceMagnitude * Time.fixedDeltaTime;
+        //controlRb.AddTorque(torque);
+
+        Vector3 face = (vInput * transform.forward + hInput * transform.right);
+        var rot = Quaternion.FromToRotation(-skull.connectionPoints[0].transform.up, face);
+        Debug.Log(new Vector3(rot.x, rot.y, rot.z));
+        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce);
     }
 }
