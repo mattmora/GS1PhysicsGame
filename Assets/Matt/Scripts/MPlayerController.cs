@@ -16,11 +16,16 @@ public class MPlayerController : MonoBehaviour
 
     [SerializeField] float rotationSpeed = 100f;
 
+    public float uprightForce;
+
     Camera mainCamera;
 
     public List<MBone> playerBones;
 
     public float smoothing;
+
+    public IInputManager inputManager;
+    [SerializeField] bool isfrozen = false;
 
     private void Awake()
     {
@@ -31,21 +36,32 @@ public class MPlayerController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        //inputManager = GetComponent<IInputManager>();
+        GameObject[] bones = GameObject.FindGameObjectsWithTag("Bone");
+        foreach (GameObject b in bones)
+        {
+            playerBones.Add(b.GetComponent<MBone>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get movement inputs
-        hInput = Input.GetAxis("Horizontal");
-        vInput = Input.GetAxis("Vertical");
+        //hInput = Input.GetAxis("Horizontal");
+        //vInput = Input.GetAxis("Vertical");
+        hInput = inputManager.movement.x;
+        vInput = inputManager.movement.y;
 
         // Get inputs without smoothing for checking whether keys are pressed
-        hInputRaw = Input.GetAxisRaw("Horizontal");
-        vInputRaw = Input.GetAxisRaw("Vertical");
+        //hInputRaw = Input.GetAxisRaw("Horizontal");
+        //vInputRaw = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.R))
+        isfrozen = inputManager.freeze;
+
+        if (inputManager.restart)
         {
+            inputManager.restart = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -59,20 +75,27 @@ public class MPlayerController : MonoBehaviour
         //controlRb.AddForce(force);
 
         controlRb.constraints = RigidbodyConstraints.None;
-        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
+        //if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
+        if (isfrozen)
         {
-            if (!skull.connectionPoints[0].Ability())
+            //if (Input.GetKey(KeyCode.Space))
+            if (inputManager.jump)
             {
                 Freeze();
             }
+            //else if (!skull.connectionPoints[0].Ability())
+            else { 
+                Upright();
+            }
+            Pivot();
+            //Roll();
         }
         else
         {
-            if (!skull.connectionPoints[0].Basic())
-            {
-                Roll();
-            }
+            Roll();
         }
+
+        
 
         SmoothPosition();
     }
@@ -89,15 +112,20 @@ public class MPlayerController : MonoBehaviour
 
     public void Freeze()
     {
-        if (Mathf.Abs(hInputRaw) > 0.01f)
-        {
-            // Vector3 rot = controlRb.transform.InverseTransformDirection((hInput * transform.up));
-            controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
-            // Vector3 force = (hInput * transform.up);
-            // force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
-            // controlRb.AddTorque(force);
-        }
+        //if (Mathf.Abs(hInputRaw) > 0.01f)
+        //if (Mathf.Abs(hInput) > 0.01f)
+        //{
+            //return;
+            //controlRb.transform.Rotate((hInput * Vector3.up) * Time.fixedDeltaTime * rotationSpeed, Space.World);
+        //}
         controlRb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    public void Upright()
+    {
+        var rot = Quaternion.FromToRotation(skull.connectionPoints[0].transform.forward, Vector3.up);
+        
+        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce - (controlRb.angularVelocity * Time.fixedDeltaTime) * uprightForce);
     }
 
     public void Roll()
@@ -109,5 +137,17 @@ public class MPlayerController : MonoBehaviour
         Vector3 force = (vInput * transform.forward + hInput * transform.right);
         force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
         controlRb.AddForce(force);
+    }
+
+    public void Pivot()
+    {
+        //Vector3 torque = (vInput * transform.right + hInput * -transform.forward);
+        //torque = Vector3.ClampMagnitude(torque, 1f) * -torqueForceMagnitude * Time.fixedDeltaTime;
+        //controlRb.AddTorque(torque);
+
+        Vector3 face = (vInput * transform.forward + hInput * transform.right);
+        var rot = Quaternion.FromToRotation(-skull.connectionPoints[0].transform.up, face);
+        // Debug.Log(new Vector3(rot.x, rot.y, rot.z));
+        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce);
     }
 }

@@ -31,6 +31,8 @@ public class MConnectionPoint : MonoBehaviour
     public List<UnityEvent> ability;
     public List<UnityEvent> basic;
 
+    public IInputManager inputManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,9 @@ public class MConnectionPoint : MonoBehaviour
         gameObject.tag = "Connection";
 
         transform.Find("ConnectionReference").gameObject.SetActive(false);
+
+        //if (transform.parent.parent != null)
+            //inputManager = transform.parent.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
     }
 
     // Update is called once per frame
@@ -46,19 +51,21 @@ public class MConnectionPoint : MonoBehaviour
     {
         if (connectedBone == null) return;
 
-        if (bones.Contains(connectedBone))
-        {
-            if (Input.GetKey(KeyCode.Space))
+        //if (bones.Contains(connectedBone))
+        //{
+            if (inputManager.jump)
             {
-                activeActions[bones.IndexOf(connectedBone)].Invoke();
+                //activeActions[bones.IndexOf(connectedBone)].Invoke();
+                ActivateHinge();
             }
             else
             {
-                restActions[bones.IndexOf(connectedBone)].Invoke();
+                //restActions[bones.IndexOf(connectedBone)].Invoke();
+                DeactivateHinge();
             }
-        }
+        //}
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.X))
+        if (inputManager.detach)
         {
             Disconnect();
         }
@@ -130,11 +137,13 @@ public class MConnectionPoint : MonoBehaviour
 
                 joint.useSpring = true;
 
+                /*
                 JointSpring hingeSpring = joint.spring;
                 hingeSpring.spring = boneHingeSpringStrength[bones.IndexOf(connectedBone)];
                 hingeSpring.damper = 0.1f;
                 hingeSpring.targetPosition = boneAngle[bones.IndexOf(connectedBone)];
                 joint.spring = hingeSpring;
+                */
 
                 ignoreConnections = true;
 

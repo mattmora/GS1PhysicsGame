@@ -5,15 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Connection
+  - Bone
+  - Skull
+  - Foot
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Jaw
   - Water
   - UI
-  - 
-  - 
+  - BridgeIgnore
+  - Bridge
   - 
   - 
   - 
