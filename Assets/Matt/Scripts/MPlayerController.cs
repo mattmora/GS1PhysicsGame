@@ -47,6 +47,11 @@ public class MPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inputManager == null)
+        {
+            SmoothPosition();
+            return;
+        }
         // Get movement inputs
         //hInput = Input.GetAxis("Horizontal");
         //vInput = Input.GetAxis("Vertical");
@@ -70,6 +75,7 @@ public class MPlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (inputManager == null) return;
         //Vector3 force = new Vector3(hInput, 0, vInput);
         //force = Vector3.ClampMagnitude(force, 1f) * moveForceMagnitude * Time.fixedDeltaTime;
         //controlRb.AddForce(force);

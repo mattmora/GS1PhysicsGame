@@ -33,11 +33,14 @@ public class MDragMouseOrbit : MonoBehaviour
 
         inputManager = transform.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
     }
-    void LateUpdate()
+    void Update()
     {
+        
+
         if (target)
         {
             //if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+            if (inputManager != null)
             {
                 velocityX += xSpeed * inputManager.mouseX * distance * 0.02f;
                 velocityY += ySpeed * inputManager.mouseY * 0.02f;
