@@ -168,6 +168,7 @@ MonoBehaviour:
   smoothing: 0
   inputManager: {fileID: 0}
   isfrozen: 0
+  secretForce: 0
 --- !u!1 &984802366890935012
 GameObject:
   m_ObjectHideFlags: 0
@@ -12827,7 +12828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8224085204811162908
 Transform:
   m_ObjectHideFlags: 0

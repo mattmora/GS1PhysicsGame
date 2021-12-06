@@ -16,12 +16,12 @@ public class IInputManager : MonoBehaviour
     public bool jump = false;
     public bool detach = false;
 
-    public GameObject playerAndCam;
+    public GameObject[] playerAndSkulls;
     private PlayerInput pi;
 
     public int id;
 
-    public GameObject fakeStuff;
+    public string[] fakeStuffs;
 
     //public bool flag;
 
@@ -42,16 +42,17 @@ public class IInputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fakeStuffs = new string[] { "FakePlayerAndSkullStanding", "FakePlayerAndSkullSitPose", "FakePlayerAndSkullSitLeanF", "FakePlayerAndSkullLyingOnFloor" };
         restart = false;
         pi = GetComponent<PlayerInput>();
         id = PlayerInputManager.instance.playerCount;
         //fakeStuff = GameObject.Find("FakeStuff");
+        Debug.Log(id);
         createPlayer();
 
-        //Debug.Log(id);
         
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -60,16 +61,18 @@ public class IInputManager : MonoBehaviour
 
     private void createPlayer()
     {
-        fakeStuff = GameObject.Find("FakeStuff");
+        GameObject fakeStuff = GameObject.Find(fakeStuffs[id-1]);
         if (fakeStuff != null) Destroy(fakeStuff);
 
         Debug.Log(id);
-        GameObject obj = Instantiate(playerAndCam);
+        GameObject obj = Instantiate(playerAndSkulls[id-1]);
         //pi.camera = obj.transform.GetChild(1).GetComponent<Camera>();
         obj.transform.Find("Player").gameObject.GetComponent<MPlayerController>().inputManager = this;
         pi.camera.gameObject.GetComponent<MDragMouseOrbit>().target = obj.transform.Find("Player");
-        obj.transform.position = obj.transform.position - new Vector3((id-1) * 2, 0, 0);
-        obj.transform.Find("skull").Find("SkullConnectionPoint").gameObject.GetComponent<MConnectionPoint>().inputManager = this;
+        //obj.transform.position = obj.transform.position - new Vector3((id-1) * 2, 0, 0);
+        Transform skl = obj.transform.Find("skull").Find("SkullConnectionPoint");
+        Debug.Log(skl == null);
+        skl.gameObject.GetComponent<MConnectionPoint>().inputManager = this;
         obj.transform.Find("Player").GetComponent<CParticleScaleVelocity>().im = this;
         //obj.transform.Find("Main Camera").gameObject.GetComponent<MDragMouseOrbit>().inputManager = this;
         //obj.transform.Find("Main Camera").gameObject.GetComponent<MMouseLock>().inputManager = this;
