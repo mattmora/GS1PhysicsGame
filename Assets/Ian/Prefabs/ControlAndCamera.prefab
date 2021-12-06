@@ -54,9 +54,13 @@ MonoBehaviour:
   ESC: 0
   jump: 0
   detach: 0
-  playerAndCam: {fileID: 1307947036598222377, guid: e997ddc4dd8b9684a88985763a938da4, type: 3}
+  playerAndSkulls:
+  - {fileID: 2389819952337593646, guid: 0f81bbeabddd56445b611d67ff8b5083, type: 3}
+  - {fileID: 1342394718544524060, guid: 4e29f3a0716f6d840aead3f12b5b76e7, type: 3}
+  - {fileID: 2227660902646730314, guid: ad0aa32f40afdb44e889ff63387c3cae, type: 3}
+  - {fileID: 3340004867893716309, guid: 89513d637c3be8f4fa28e6045c549ed0, type: 3}
   id: 0
-  fakeStuff: {fileID: 0}
+  fakeStuffs: []
 --- !u!114 &616898570764462347
 MonoBehaviour:
   m_ObjectHideFlags: 0

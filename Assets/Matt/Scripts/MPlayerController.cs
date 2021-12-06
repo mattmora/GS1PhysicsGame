@@ -27,6 +27,8 @@ public class MPlayerController : MonoBehaviour
     public IInputManager inputManager;
     [SerializeField] bool isfrozen = false;
 
+    public float secretForce;
+
     private void Awake()
     {
         playerBones = new List<MBone>();
@@ -155,5 +157,6 @@ public class MPlayerController : MonoBehaviour
         var rot = Quaternion.FromToRotation(-skull.connectionPoints[0].transform.up, face);
         // Debug.Log(new Vector3(rot.x, rot.y, rot.z));
         controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce);
+        //controlRb.AddForce(Vector3.up * secretForce);
     }
 }
