@@ -17,7 +17,7 @@ public class MConnectionPoint : MonoBehaviour
 
     bool ignoreConnections = false;
 
-    MBone connectedBone;
+    public MBone connectedBone;
 
     // Hacky, think of these two lists as a Dictionary
     // bones are used to call actions at the same index
