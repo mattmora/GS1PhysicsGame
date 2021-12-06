@@ -156,7 +156,7 @@ public class MPlayerController : MonoBehaviour
         Vector3 face = (vInput * transform.forward + hInput * transform.right);
         var rot = Quaternion.FromToRotation(-skull.connectionPoints[0].transform.up, face);
         // Debug.Log(new Vector3(rot.x, rot.y, rot.z));
-        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce);
+        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce * 2);
         //controlRb.AddForce(Vector3.up * secretForce);
     }
 }
