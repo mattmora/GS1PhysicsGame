@@ -20,7 +20,7 @@ public class ISetToTransparant : MonoBehaviour
     {
         if (t.gameObject.GetComponent<MeshRenderer>() != null)
         {
-            Material[] mats = t.gameObject.GetComponent<MeshRenderer>().materials;
+            Material[] mats = t.gameObject.GetComponent<MeshRenderer>().sharedMaterials;
             foreach (Material m in mats)
             {
                 m.SetFloat("_Mode", 3);
@@ -28,16 +28,7 @@ public class ISetToTransparant : MonoBehaviour
                 m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
                 m.EnableKeyword("_ALPHABLEND_ON");
                 m.renderQueue = 3000;
-                /*
-                m.SetOverrideTag("RenderType", "Transparent");
-                m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                m.SetInt("_ZWrite", 0);
-                m.DisableKeyword("_ALPHATEST_ON");
-                m.DisableKeyword("_ALPHABLEND_ON");
-                m.EnableKeyword("_ALPHAPREMULTIPLY_ON");
-                m.renderQueue = 3000;
-                */
+                
             }
             return;
         }

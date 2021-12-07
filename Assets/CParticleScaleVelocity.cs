@@ -19,6 +19,8 @@ public class CParticleScaleVelocity : MonoBehaviour
     public AudioClip jumpSound;
     AudioSource jumpSource;
 
+    public Vector3 savedNormal;
+
     
     // Start is called before the first frame update
     void Start()
@@ -69,22 +71,36 @@ public class CParticleScaleVelocity : MonoBehaviour
         Debug.Log("Current V is ="+ rb.velocity.magnitude + " and collidng with" + collision.gameObject.name);
 
         float mag = 0f;
+        Vector3 tempVec = Vector3.zero;
         foreach (var contact in collision.contacts)
         {
-            mag = Mathf.Max(mag, rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized));
+            if (mag < rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized))
+            {
+                tempVec = contact.normal;
+                mag = rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized);
+            }
+            //tempVec = contact.normal;
+            //mag = Mathf.Max(mag, rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized));
         }
 
         Debug.Log("Norm mag " + mag);
+        if (Vector3.Dot(savedNormal, tempVec) > 0.4f) return; 
 
         PlayHitSounds(Mathf.Clamp01(Mathf.Log10(mag)));
 
         if (mag < 5.0f) return;
         if (im.freeze) return;
 
+        savedNormal = tempVec;
         psHit.Play();
     }
 
- 
+    public void OnCollisionExit(Collision collision)
+    {
+        savedNormal = Vector3.zero;
+    }
+
+
     void PlayHitSounds(float volume)
     {
         for (int i = 0; i < hitSounds.Count; ++i)
