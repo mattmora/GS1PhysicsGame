@@ -42,8 +42,8 @@ public class MDragMouseOrbit : MonoBehaviour
             //if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
             if (inputManager != null)
             {
-                velocityX += xSpeed * inputManager.mouseX * distance * 0.02f;
-                velocityY += ySpeed * inputManager.mouseY * 0.02f;
+                velocityX += xSpeed * inputManager.mouseX * distance * Time.deltaTime;
+                velocityY += ySpeed * inputManager.mouseY * Time.deltaTime;
             }
             rotationYAxis += velocityX;
             rotationXAxis -= velocityY;

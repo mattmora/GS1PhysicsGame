@@ -21,6 +21,8 @@ public class CParticleScaleVelocity : MonoBehaviour
 
     public Vector3 savedNormal;
 
+    //public bool touching;
+    public HashSet<GameObject> touchingObjs;
     
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,8 @@ public class CParticleScaleVelocity : MonoBehaviour
         jumpSource = gameObject.AddComponent<AudioSource>();
         jumpSource.volume = 0.7f;
         jumpSource.clip = jumpSound;
+
+        touchingObjs = new HashSet<GameObject>();
     }
 
     // Update is called once per frame
@@ -66,9 +70,18 @@ public class CParticleScaleVelocity : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        //if (!touching) savedNormal = Vector3.zero;
+        //touching = false;
+        
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Current V is ="+ rb.velocity.magnitude + " and collidng with" + collision.gameObject.name);
+        if (touchingObjs.Count == 0) savedNormal = Vector3.zero;
+        touchingObjs.Add(collision.gameObject);
 
         float mag = 0f;
         Vector3 tempVec = Vector3.zero;
@@ -76,15 +89,18 @@ public class CParticleScaleVelocity : MonoBehaviour
         {
             if (mag < rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized))
             {
-                tempVec = contact.normal;
+                tempVec = Vector3.Normalize(contact.normal);
                 mag = rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized);
             }
             //tempVec = contact.normal;
             //mag = Mathf.Max(mag, rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized));
         }
 
-        Debug.Log("Norm mag " + mag);
-        if (Vector3.Dot(savedNormal, tempVec) > 0.4f) return; 
+        //Debug.Log("Norm mag " + mag);
+        //Debug.Log("normal: " + tempVec + " magnitute: " + tempVec.magnitude);
+        Debug.Log("dot product: " + Vector3.Dot(tempVec, savedNormal));
+
+        if (Vector3.Dot(savedNormal, tempVec) > 0.1f) return; 
 
         PlayHitSounds(Mathf.Clamp01(Mathf.Log10(mag)));
 
@@ -97,7 +113,10 @@ public class CParticleScaleVelocity : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        savedNormal = Vector3.zero;
+        //Debug.Log("Exited");
+        //savedNormal = Vector3.zero;
+        //touching = true;
+        touchingObjs.Remove(collision.gameObject);
     }
 
 
@@ -107,7 +126,8 @@ public class CParticleScaleVelocity : MonoBehaviour
         {
             hitSources[i].volume = volume;
             hitSources[i].pitch = 1.6f - Mathf.Clamp01(Mathf.Log10(rb.velocity.magnitude)) + Random.Range(-0.1f, 0.4f);
-            hitSources[i].PlayDelayed(Random.Range(0f, 0.02f));
+            //hitSources[i].PlayDelayed(Random.Range(0f, 0.02f));
+            hitSources[i].Play();
         }
     }
 }
