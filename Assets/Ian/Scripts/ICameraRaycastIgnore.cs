@@ -47,7 +47,10 @@ public class ICameraRaycastIgnore : MonoBehaviour
     private void setOpacity(MeshRenderer mr, float op)
     {
         if (mr == null) return;
-        Color currentCol = mr.material.color;
-        mr.material.color = new Color(currentCol.r, currentCol.g, currentCol.b, op);
+        foreach (Material mat in mr.materials)
+        {
+            Color currentCol = mat.color;
+            mat.color = new Color(currentCol.r, currentCol.g, currentCol.b, op);
+        }
     }
 }

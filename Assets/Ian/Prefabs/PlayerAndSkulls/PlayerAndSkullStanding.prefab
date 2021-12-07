@@ -5765,6 +5765,8 @@ MonoBehaviour:
   psHop: {fileID: 0}
   psHit: {fileID: 0}
   bone: {fileID: 0}
+  hitSounds: []
+  jumpSound: {fileID: 0}
 --- !u!1 &2512821158409091245
 GameObject:
   m_ObjectHideFlags: 0
@@ -32390,7 +32392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8536714673432375770}
   m_LocalRotation: {x: 0.00000008940697, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.100000024, y: -125.607994, z: -22.14}
+  m_LocalPosition: {x: 0.100000024, y: 1.21, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7318317002318294134}
@@ -32690,3 +32692,5 @@ MonoBehaviour:
   psHop: {fileID: 877025847891997645}
   psHit: {fileID: 2324052515485509128}
   bone: {fileID: 0}
+  hitSounds: []
+  jumpSound: {fileID: 0}

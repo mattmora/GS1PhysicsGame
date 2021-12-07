@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51272
+  m_Name: pb_Mesh18844
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -287,6 +287,23 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &55314175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 111823219288254027, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
+  m_PrefabInstance: {fileID: 1796090388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &55314176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55314175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a4c19a0cee0d64da6336229dd895ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &58698339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,27 +1359,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000038146973
+      value: 16.2
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 157.4
+      value: 38.7
       objectReference: {fileID: 0}
     - target: {fileID: 111823219288254036, guid: ada3ae0871ba68e4a9046530489d69f6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6531,7 +6548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 639232220836151094}
-  distance: 5
+  distance: 4
   xSpeed: 5
   ySpeed: 10
   yMinLimit: 10
