@@ -13,12 +13,23 @@ public class CParticleScaleVelocity : MonoBehaviour
 
     public MBone bone;
 
+    public List<AudioClip> hitSounds;
+    List<AudioSource> hitSources;
+
     
     // Start is called before the first frame update
     void Start()
     {
+        hitSources = new List<AudioSource>();
+
         bone = GetComponent<MBone>();
 
+        foreach (AudioClip clip in hitSounds)
+        {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.clip = clip;
+            hitSources.Add(source);
+        }
     }
 
     // Update is called once per frame
@@ -44,16 +55,28 @@ public class CParticleScaleVelocity : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Current V is ="+ rb.velocity.magnitude + " and collidng with" + collision.gameObject.name);
-        if (rb.velocity.magnitude < 5.0f)
-            return;
-        if (im.freeze)
-            return;
+
+        if (rb.velocity.magnitude < 1.0f) return;
+
+        PlayHitSounds(Mathf.Clamp(Mathf.Log10(rb.velocity.magnitude), 0.25f, 0.85f));
+
+        if (rb.velocity.magnitude < 5.0f) return;
+        if (im.freeze) return;
 
         psHit.Play();
     }
 
  
+    void PlayHitSounds(float volume)
+    {
+        for (int i = 0; i < hitSounds.Count; ++i)
+        {
+            hitSources[i].volume = volume;
+            hitSources[i].pitch = 1.6f - Mathf.Clamp01(Mathf.Log10(rb.velocity.magnitude)) + Random.Range(-0.1f, 0.4f);
+            hitSources[i].PlayDelayed(Random.Range(0f, 0.02f));
+        }
+    }
 }
