@@ -16,6 +16,9 @@ public class CParticleScaleVelocity : MonoBehaviour
     public List<AudioClip> hitSounds;
     List<AudioSource> hitSources;
 
+    public AudioClip jumpSound;
+    AudioSource jumpSource;
+
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,10 @@ public class CParticleScaleVelocity : MonoBehaviour
             source.clip = clip;
             hitSources.Add(source);
         }
+
+        jumpSource = gameObject.AddComponent<AudioSource>();
+        jumpSource.volume = 0.7f;
+        jumpSource.clip = jumpSound;
     }
 
     // Update is called once per frame
@@ -46,6 +53,8 @@ public class CParticleScaleVelocity : MonoBehaviour
         {
             Debug.Log("Hop Once");
             psHop.Play();
+            jumpSource.pitch = Random.Range(1f, 2f);
+            jumpSource.Play();
             playHopParticle = false; 
         }
         else
@@ -59,11 +68,17 @@ public class CParticleScaleVelocity : MonoBehaviour
     {
         Debug.Log("Current V is ="+ rb.velocity.magnitude + " and collidng with" + collision.gameObject.name);
 
-        if (rb.velocity.magnitude < 1.0f) return;
+        float mag = 0f;
+        foreach (var contact in collision.contacts)
+        {
+            mag = Mathf.Max(mag, rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized));
+        }
 
-        PlayHitSounds(Mathf.Clamp(Mathf.Log10(rb.velocity.magnitude), 0.25f, 0.85f));
+        Debug.Log("Norm mag " + mag);
 
-        if (rb.velocity.magnitude < 5.0f) return;
+        PlayHitSounds(Mathf.Clamp01(Mathf.Log10(mag)));
+
+        if (mag < 5.0f) return;
         if (im.freeze) return;
 
         psHit.Play();
