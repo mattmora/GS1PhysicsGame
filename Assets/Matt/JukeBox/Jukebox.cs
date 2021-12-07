@@ -221,9 +221,9 @@ public class Jukebox : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Skull" && !changingTrack)
+        if (other.gameObject.tag == "Skull" || other.gameObject.tag == "Foot" && !changingTrack)
         {
-            if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 4f)
+            if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 3f)
                 StartCoroutine(ChangeTrack());
         }
     }

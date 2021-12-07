@@ -149,6 +149,7 @@ public class MConnectionPoint : MonoBehaviour
 
                 connectedBone.transform.SetParent(bone.transform);
             }
+            //else if  (otherBone.gameObject.tag == "Skull" && otherConnectionPoint.connectedBone == null)
         }
     }
 
