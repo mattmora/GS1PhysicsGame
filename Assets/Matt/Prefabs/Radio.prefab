@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4412154806240261551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4097528, y: 27.812391, z: 0.63313043}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   currentSong: -1
   random: 0
   playOnStart: 0
-  musicVolume: 0.3
+  musicVolume: 0.5
 --- !u!64 &4412154806240261544
 MeshCollider:
   m_ObjectHideFlags: 0

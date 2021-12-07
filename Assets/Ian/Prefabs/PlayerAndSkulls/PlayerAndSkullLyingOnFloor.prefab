@@ -51,8 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skull: {fileID: 3340004867378712166}
   controlRb: {fileID: 3340004867378712161}
-  moveForceMagnitude: 100
-  torqueForceMagnitude: 100
+  moveForceMagnitude: 150
+  torqueForceMagnitude: 50
   hInput: 0
   vInput: 0
   hInputRaw: 0
@@ -19753,7 +19753,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2129872142744449190, guid: e09600b55592423459df977c51311a10, type: 3}
+  - {fileID: 2100000, guid: fc7f8d6832273da4b88c9e76a2ac9b5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
