@@ -5794,7 +5794,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -11309,13 +11309,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4048836619458352213}
-  m_LocalRotation: {x: 0.22282477, y: 0, z: 0, w: 0.9748585}
+  m_LocalRotation: {x: 0.054078825, y: 0, z: 0, w: 0.9985367}
   m_LocalPosition: {x: -0.038, y: -0.007, z: -0.468}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4083516958774108943}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 25.75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.2, y: 0, z: 0}
 --- !u!33 &581787009211618768
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11593,7 +11593,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -16292,7 +16292,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4190189553296633347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16678,7 +16678,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -21647,6 +21647,7 @@ MonoBehaviour:
   psRoll: {fileID: 6781440771797944080}
   psHop: {fileID: 6961940473964125316}
   psHit: {fileID: 4589150116127405345}
+  psSmoke: {fileID: 5741806568827122234}
   bone: {fileID: 0}
   hitSounds:
   - {fileID: 8300000, guid: 2d6f3cba883bfe045a83676b09b30f55, type: 3}
@@ -26878,7 +26879,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -37133,13 +37134,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7732009671052177609}
-  m_LocalRotation: {x: 0.22282477, y: 0, z: 0, w: 0.9748585}
+  m_LocalRotation: {x: 0.054078825, y: 0, z: 0, w: 0.9985367}
   m_LocalPosition: {x: 0.04369561, y: -0, z: -0.467}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 1341351204156691803}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 25.75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.2, y: 0, z: 0}
 --- !u!33 &1242504371823917167
 MeshFilter:
   m_ObjectHideFlags: 0

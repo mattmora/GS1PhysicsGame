@@ -52,8 +52,8 @@ public class CParticleScaleVelocity : MonoBehaviour
         ParticleSystem.MainModule main = psRoll.main;
 	    main.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude*0.5f);
 
-        main = psSmoke.main;
-        main.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude * 0.5f);
+        ParticleSystem.MainModule mainn = psSmoke.main;
+        mainn.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude * 0.5f);
 
         if (!im.jump)
         {

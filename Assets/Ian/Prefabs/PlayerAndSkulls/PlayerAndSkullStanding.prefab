@@ -6128,7 +6128,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -11000,7 +11000,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -21245,7 +21245,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -37242,7 +37242,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -42380,7 +42380,7 @@ MonoBehaviour:
   psRoll: {fileID: 1959894706862463036}
   psHop: {fileID: 877025847891997645}
   psHit: {fileID: 2324052515485509128}
-  psSmoke: {fileID: 0}
+  psSmoke: {fileID: 1730581192364754144}
   bone: {fileID: 0}
   hitSounds:
   - {fileID: 8300000, guid: 2d6f3cba883bfe045a83676b09b30f55, type: 3}

@@ -62,10 +62,13 @@ public class IInputManager : MonoBehaviour
     private void createPlayer()
     {
         GameObject fakeStuff = GameObject.Find(fakeStuffs[id-1]);
+        Transform tempT = fakeStuff.transform;
         if (fakeStuff != null) Destroy(fakeStuff);
 
         Debug.Log(id);
         GameObject obj = Instantiate(playerAndSkulls[id-1]);
+        obj.transform.position = tempT.position;
+        obj.transform.localRotation = tempT.localRotation;
         //pi.camera = obj.transform.GetChild(1).GetComponent<Camera>();
         obj.transform.Find("Player").gameObject.GetComponent<MPlayerController>().inputManager = this;
         pi.camera.gameObject.GetComponent<MDragMouseOrbit>().target = obj.transform.Find("Player");
