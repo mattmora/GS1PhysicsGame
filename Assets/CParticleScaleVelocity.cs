@@ -44,6 +44,14 @@ public class CParticleScaleVelocity : MonoBehaviour
         jumpSource.clip = jumpSound;
 
         touchingObjs = new HashSet<GameObject>();
+
+        ParticleSystem.MainModule main = psRoll.main;
+        main.maxParticles = 0;
+        ParticleSystem.MainModule mainn = psSmoke.main;
+        mainn.maxParticles = 0;
+
+        psRoll.Play();
+        psSmoke.Play();
     }
 
     // Update is called once per frame
