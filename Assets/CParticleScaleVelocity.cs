@@ -9,6 +9,7 @@ public class CParticleScaleVelocity : MonoBehaviour
     public ParticleSystem psRoll;
     public ParticleSystem psHop;
     public ParticleSystem psHit;
+    public ParticleSystem psSmoke;
     bool playHopParticle;
 
     public MBone bone;
@@ -50,6 +51,9 @@ public class CParticleScaleVelocity : MonoBehaviour
     {
         ParticleSystem.MainModule main = psRoll.main;
 	    main.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude*0.5f);
+
+        main = psSmoke.main;
+        main.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude * 0.5f);
 
         if (!im.jump)
         {
