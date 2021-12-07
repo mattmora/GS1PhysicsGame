@@ -36,7 +36,10 @@ public class CParticleScaleVelocity : MonoBehaviour
             Debug.Log("Hop Once");
             psHop.Play();
             playHopParticle = false; 
-            
+        }
+        else
+        {
+            psHop.Stop();
         }
 
     }
@@ -50,7 +53,6 @@ public class CParticleScaleVelocity : MonoBehaviour
             return;
 
         psHit.Play();
-
     }
 
  
