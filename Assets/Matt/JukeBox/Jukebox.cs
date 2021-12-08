@@ -23,7 +23,7 @@ public class Jukebox : MonoBehaviour
     /// <summary>
     /// Ensures that only one jukebox instance will be available throughout a gameplay.
     /// </summary>	
-    private static Jukebox tmp;
+    public static Jukebox tmp;
     /// <summary>
     /// The volume of the music.
     /// </summary>
@@ -61,7 +61,8 @@ public class Jukebox : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject.GetComponent<SongDisplay>());
+            Destroy(this);
         }
     }
 
@@ -229,13 +230,13 @@ public class Jukebox : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void Collision(Collision other)
     {
         if (changingTrack) return;
 
         if (other.gameObject.tag == "Skull" || (other.gameObject.tag == "Foot" && other.gameObject.GetComponent<MBone>().attachedToPlayer))
         {
-            if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 3f)
+            //if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 3f)
                 StartCoroutine(ChangeTrack());
         }
     }

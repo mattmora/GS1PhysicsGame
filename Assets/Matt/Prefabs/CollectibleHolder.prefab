@@ -58,3 +58,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 100, z: 0}
+  collectSound: {fileID: 8300000, guid: 414ae85b83945c946bd7597ce8c8c312, type: 3}
+  pitch: 0.8
+  volume: 0.3
