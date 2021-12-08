@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class MDragMouseOrbit : MonoBehaviour
 {
@@ -35,7 +36,17 @@ public class MDragMouseOrbit : MonoBehaviour
     }
     void Update()
     {
-        
+        if (inputManager != null)
+        {
+            if (inputManager.id == 3 && PlayerInputManager.instance.playerCount == 3)
+            {
+                //Debug.Log("3 players rn");
+                gameObject.GetComponent<Camera>().rect = new Rect(0f, 0f, 1f, 0.5f);
+                //rect.width = 1;
+                //gameObject.GetComponent<Camera>().rect = rect;
+            }
+            else { }
+        }
 
         if (target)
         {

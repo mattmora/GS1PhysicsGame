@@ -44,6 +44,14 @@ public class CParticleScaleVelocity : MonoBehaviour
         jumpSource.clip = jumpSound;
 
         touchingObjs = new HashSet<GameObject>();
+
+        ParticleSystem.MainModule main = psRoll.main;
+        main.maxParticles = 0;
+        ParticleSystem.MainModule mainn = psSmoke.main;
+        mainn.maxParticles = 0;
+
+        psRoll.Play();
+        psSmoke.Play();
     }
 
     // Update is called once per frame
@@ -52,8 +60,8 @@ public class CParticleScaleVelocity : MonoBehaviour
         ParticleSystem.MainModule main = psRoll.main;
 	    main.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude*0.5f);
 
-        main = psSmoke.main;
-        main.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude * 0.5f);
+        ParticleSystem.MainModule mainn = psSmoke.main;
+        mainn.maxParticles = im.freeze ? 0 : (int)(rb.velocity.sqrMagnitude * 0.5f);
 
         if (!im.jump)
         {
