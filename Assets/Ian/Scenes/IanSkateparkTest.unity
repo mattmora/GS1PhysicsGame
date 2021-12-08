@@ -1733,6 +1733,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakePlayerAndSkullSitLeanF
       objectReference: {fileID: 0}
+    - target: {fileID: 4899814364507880744, guid: 0c6ff52d6c217994f987e7f649d513b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0004716312
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899814364507880744, guid: 0c6ff52d6c217994f987e7f649d513b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0006478047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899814364507880744, guid: 0c6ff52d6c217994f987e7f649d513b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.003415004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6ff52d6c217994f987e7f649d513b0, type: 3}
 --- !u!1001 &720122945
@@ -1974,6 +1986,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4741797699094042169, guid: 0a0c9457a853c0045b1a83c63766261b, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0004714524
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741797699094042169, guid: 0a0c9457a853c0045b1a83c63766261b, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.003414527
+      objectReference: {fileID: 0}
     - target: {fileID: 4741797699669310731, guid: 0a0c9457a853c0045b1a83c63766261b, type: 3}
       propertyPath: m_Name
       value: FakePlayerAndSkullLyingOnFloor
@@ -2800,6 +2820,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2184030356660823672, guid: b9a129e2f333fee4f9586f974c0f0ac0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0006478382
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184030356660823672, guid: b9a129e2f333fee4f9586f974c0f0ac0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.003414393
+      objectReference: {fileID: 0}
     - target: {fileID: 9172145387914841098, guid: b9a129e2f333fee4f9586f974c0f0ac0, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -3852,7 +3880,7 @@ MonoBehaviour:
         m_Flags: 0
       - m_Name: 
         m_Id: 6be53d0f-e98a-4b12-8852-70a523ca807c
-        m_Path: <SwitchProControllerHID>/buttonNorth
+        m_Path: <SwitchProControllerHID>/start
         m_Interactions: 
         m_Processors: 
         m_Groups: 
@@ -12085,6 +12113,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3802187235428399736, guid: 73c56d18f470e494c9a692c214682039, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00047186963
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802187235428399736, guid: 73c56d18f470e494c9a692c214682039, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.00064788293
+      objectReference: {fileID: 0}
+    - target: {fileID: 3802187235428399736, guid: 73c56d18f470e494c9a692c214682039, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.003415272
+      objectReference: {fileID: 0}
     - target: {fileID: 6179264757177847818, guid: 73c56d18f470e494c9a692c214682039, type: 3}
       propertyPath: m_RootOrder
       value: 11

@@ -180,6 +180,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dfa819f2-a7bc-4a24-b3bf-d3fa43e781a2",
+                    "path": "<SwitchProControllerHID>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "SwitchProController",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e8e630be-aa1c-4c14-bd5c-90717a31d528",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",

@@ -29,6 +29,9 @@ public class MPlayerController : MonoBehaviour
 
     public float secretForce;
 
+    public Vector3 skullStartPos;
+    public Quaternion skullStartQuat;
+
     private void Awake()
     {
         playerBones = new List<MBone>();
@@ -44,6 +47,8 @@ public class MPlayerController : MonoBehaviour
         {
             playerBones.Add(b.GetComponent<MBone>());
         }
+        skullStartPos = skull.transform.position;
+        skullStartQuat = skull.transform.rotation;
     }
 
     // Update is called once per frame
@@ -68,8 +73,13 @@ public class MPlayerController : MonoBehaviour
 
         if (inputManager.restart)
         {
-            inputManager.restart = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //inputManager.restart = false;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            skull.transform.Find("SkullConnectionPoint").GetComponent<MConnectionPoint>().Disconnect();
+            skull.transform.position = skullStartPos;
+            skull.transform.rotation = skullStartQuat;
+            skull.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            skull.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
 
         SmoothPosition();
