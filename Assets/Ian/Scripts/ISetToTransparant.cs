@@ -33,13 +33,14 @@ public class ISetToTransparant : MonoBehaviour
             Material[] newMats = new Material[ms.Length];
             for (int i=0; i<ms.Length; i++)
             {
-                /*
+                Material m = ms[i];
                 m.SetFloat("_Mode", 3);
                 m.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
                 m.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
                 m.EnableKeyword("_ALPHABLEND_ON");
                 m.renderQueue = 3000;
-                */
+                
+                /*
                 Material m = ms[i];
                 switch (m.name)
                 {
@@ -56,6 +57,7 @@ public class ISetToTransparant : MonoBehaviour
                         break;
                 }
                 t.gameObject.GetComponent<MeshRenderer>().sharedMaterials = newMats;
+                */
             }
             return;
         }
