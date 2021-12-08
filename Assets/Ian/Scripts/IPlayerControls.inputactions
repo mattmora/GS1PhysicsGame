@@ -147,6 +147,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f377737a-7f24-41ef-9b15-92906250cb5e",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.2)",
+                    "groups": "xboxController",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "707622a6-b9ee-4b48-87c2-fece0ad380ac",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -163,6 +174,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "SwitchProController",
+                    "action": "Freeze",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50c49602-00a6-457b-ae18-fa6dd455aa53",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xboxController",
                     "action": "Freeze",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -191,6 +213,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d1efb272-fb19-4765-aa1c-d2d21aa209cd",
+                    "path": "<XInputController>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xboxController",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e8e630be-aa1c-4c14-bd5c-90717a31d528",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",
@@ -213,6 +246,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b48ae191-1bde-4625-904c-a7e0c7b79e8f",
+                    "path": "<XInputController>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xboxController",
+                    "action": "MouseX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "80b5fb6a-37a8-499b-a12a-6c6862033924",
                     "path": "<Mouse>/delta/y",
                     "interactions": "",
@@ -229,6 +273,17 @@
                     "interactions": "",
                     "processors": "Scale(factor=6)",
                     "groups": "SwitchProController",
+                    "action": "MouseY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14ae81e4-6151-49a3-b1bb-baec7ecc047a",
+                    "path": "<XInputController>/rightStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xboxController",
                     "action": "MouseY",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -279,6 +334,17 @@
                 },
                 {
                     "name": "",
+                    "id": "37fa3584-d5bd-4462-b1fc-7347bff73cf9",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xboxController",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "cfab82d4-9b65-4db6-b467-7464a4b5e11d",
                     "path": "<Keyboard>/x",
                     "interactions": "",
@@ -295,6 +361,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "SwitchProController",
+                    "action": "Detach",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "666f8539-587e-4aac-88f7-4a20514936cd",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "xboxController",
                     "action": "Detach",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -325,6 +402,17 @@
             "devices": [
                 {
                     "devicePath": "<SwitchProControllerHID>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "xboxController",
+            "bindingGroup": "xboxController",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
                     "isOptional": false,
                     "isOR": false
                 }

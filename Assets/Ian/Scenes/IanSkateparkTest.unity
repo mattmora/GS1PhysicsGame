@@ -3886,6 +3886,14 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Join
         m_Flags: 0
+      - m_Name: 
+        m_Id: 229ea534-f838-48bf-9c34-ef2040af6c4f
+        m_Path: <XInputController>/start
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 7379581106495986759, guid: 1552bdd636812d543a0e4b965b1e3a37, type: 3}
   m_SplitScreen: 1
