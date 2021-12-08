@@ -12214,7 +12214,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 223
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -12248,7 +12248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 639232220836151094}
   distance: 1.5
-  xSpeed: 10
+  xSpeed: 5
   ySpeed: 10
   yMinLimit: 5
   yMaxLimit: 70

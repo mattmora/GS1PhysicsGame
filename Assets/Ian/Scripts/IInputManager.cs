@@ -57,6 +57,50 @@ public class IInputManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(movement);
+        disableBorders();
+        switch (PlayerInputManager.instance.playerCount)
+        {
+            case 1: break;
+            case 2:
+                if (id == 1) enableOneBorder("right");
+                else enableOneBorder("left");
+                break;
+            case 3:
+                if (id == 1)
+                {
+                    enableOneBorder("right");
+                    enableOneBorder("bottom");
+                }
+                else if (id == 2)
+                {
+                    enableOneBorder("left");
+                    enableOneBorder("bottom");
+                }
+                else enableOneBorder("top");
+                break;
+            case 4:
+                if (id == 1)
+                {
+                    enableOneBorder("right");
+                    enableOneBorder("bottom");
+                }
+                else if (id == 2)
+                {
+                    enableOneBorder("left");
+                    enableOneBorder("bottom");
+                }
+                else if (id == 3)
+                {
+                    enableOneBorder("right");
+                    enableOneBorder("top");
+                }
+                else
+                {
+                    enableOneBorder("left");
+                    enableOneBorder("top");
+                }
+                break;
+        }
     }
 
     private void createPlayer()
@@ -91,6 +135,7 @@ public class IInputManager : MonoBehaviour
                     mm.inputManager = this;
                     startCam.transform.SetParent(transform.parent);
                     pi.camera = startCam.GetComponent<Camera>();
+                    transform.parent.Find("UICamera").GetComponent<IUICamera>().mainCamTransform = startCam.transform;
                 }
                 else
                 {
@@ -102,6 +147,21 @@ public class IInputManager : MonoBehaviour
         //{
             
         //}
+    }
+
+    private void disableBorders()
+    {
+        Transform borders = transform.parent.Find("Borders");
+        for (int i=0; i<borders.childCount; i++)
+        {
+            borders.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    private void enableOneBorder(string side)
+    {
+        Transform borders = transform.parent.Find("Borders");
+        borders.Find(side + "border").gameObject.SetActive(true);
     }
 
     public void onMove(InputAction.CallbackContext ctx)
