@@ -21,6 +21,8 @@ public class MDragMouseOrbit : MonoBehaviour
 
     public IInputManager inputManager;
 
+    Transform realTarget;
+
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
@@ -48,6 +50,14 @@ public class MDragMouseOrbit : MonoBehaviour
             else { }
         }
 
+        if (target != null)
+        {
+            MPlayerController player = target.gameObject.GetComponent<MPlayerController>();
+            if (player != null) realTarget = player.camTarget.transform;
+        }
+
+        //if (realTarget == null) realTarget = target;
+
         if (target)
         {
             //if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
@@ -70,13 +80,14 @@ public class MDragMouseOrbit : MonoBehaviour
             //    distance -= hit.distance;
             //}
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-            Vector3 position = rotation * negDistance + target.position;
+            Vector3 position = rotation * negDistance + realTarget.position;
 
             transform.rotation = rotation;
             transform.position = position;
             velocityX = Mathf.Lerp(velocityX, 0, Time.deltaTime * smoothTime);
             velocityY = Mathf.Lerp(velocityY, 0, Time.deltaTime * smoothTime);
 
+            // Rotate the player for input direction purposes
             target.transform.rotation = Quaternion.Euler(target.transform.eulerAngles.x, transform.eulerAngles.y, target.transform.eulerAngles.z);
         }
     }

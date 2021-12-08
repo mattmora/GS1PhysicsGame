@@ -49,6 +49,8 @@ public class Jukebox : MonoBehaviour
     bool changingTrack = false;
     public float musicVolume = 0.2f;
 
+    float songTimer;
+    bool playing;
     void Awake()
     {
         if (tmp == null)
@@ -92,6 +94,13 @@ public class Jukebox : MonoBehaviour
             _volume = _volume < 0.0f ? 0.0f : _volume;
             source.volume = _volume / 100.0f;
         }
+    }
+
+    private void Update()
+    {
+        if (!playing) return;
+        songTimer -= Time.deltaTime;
+        if (songTimer < 0f) NextTrack();
     }
 
     /// <summary>
@@ -168,6 +177,7 @@ public class Jukebox : MonoBehaviour
     /// </summary>
     public void Play()
     {
+        playing = true;
         if (songs.Length > 0)
         {
             currentSong = Mathf.Clamp(currentSong, 0, songs.Length - 1);
@@ -177,7 +187,7 @@ public class Jukebox : MonoBehaviour
                 volume = volume;
                 source.clip = songs[currentSong].clip;
                 source.Play();
-                Invoke("NextTrack", songs[currentSong].clip.length);
+                songTimer = songs[currentSong].clip.length;
                 ShowTitle();
             }
             else
@@ -221,7 +231,9 @@ public class Jukebox : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Skull" || other.gameObject.tag == "Foot" && !changingTrack)
+        if (changingTrack) return;
+
+        if (other.gameObject.tag == "Skull" || (other.gameObject.tag == "Foot" && other.gameObject.GetComponent<MBone>().attachedToPlayer))
         {
             if (other.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 3f)
                 StartCoroutine(ChangeTrack());
