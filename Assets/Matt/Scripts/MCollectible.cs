@@ -29,6 +29,11 @@ public class MCollectible : MonoBehaviour
         {
             // Set the hat instances on the skull inactive
             Transform collectibles = other.transform.Find("Collectibles");
+            ParticleSystem psHat = other.transform.parent.Find("Player").Find("Particle System HatWord").gameObject.GetComponent<ParticleSystem>();
+            ParticleSystem psHatE = other.transform.parent.Find("Player").Find("Particle System HatWord").Find("Particle System Hat").gameObject.GetComponent<ParticleSystem>();
+
+            psHat.Play();
+            psHatE.Play();
             for (int i = 0; i < collectibles.childCount; ++i)
             {
                 collectibles.GetChild(i).gameObject.SetActive(false);
