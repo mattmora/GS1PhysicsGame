@@ -29,12 +29,18 @@ public class MPlayerController : MonoBehaviour
 
     public float secretForce;
 
+    Vector3 followVelocity;
+
+    [HideInInspector]
+    public GameObject camTarget;
     public Vector3 skullStartPos;
     public Quaternion skullStartQuat;
 
     private void Awake()
     {
         playerBones = new List<MBone>();
+        camTarget = new GameObject();
+        camTarget.name = "CamTarget";
     }
 
     // Start is called before the first frame update
@@ -49,6 +55,8 @@ public class MPlayerController : MonoBehaviour
         }
         skullStartPos = skull.transform.position;
         skullStartQuat = skull.transform.rotation;
+        camTarget.transform.position = transform.position + Vector3.up * 0.2f;
+
     }
 
     // Update is called once per frame
@@ -102,7 +110,8 @@ public class MPlayerController : MonoBehaviour
                 Freeze();
             }
             //else if (!skull.connectionPoints[0].Ability())
-            else { 
+            else
+            {
                 Upright();
             }
             Pivot();
@@ -112,20 +121,56 @@ public class MPlayerController : MonoBehaviour
         {
             Roll();
         }
-
-        
-
-        SmoothPosition();
     }
 
     void SmoothPosition()
     {
-        float effectiveSmoothing = smoothing;
-        if ((controlRb.worldCenterOfMass - transform.position).magnitude > 1f)
+        Vector3 smooth = Vector3.SmoothDamp(transform.position, controlRb.worldCenterOfMass, ref followVelocity, 0.01f);
+        transform.position = controlRb.worldCenterOfMass;
+
+        float x = camTarget.transform.position.x;
+        float y = camTarget.transform.position.y;
+        float z = camTarget.transform.position.z;
+
+        //if (transform.position.x > x)
+        //{
+        //    x = transform.position.x;
+        //}
+        //else if (transform.position.x < x - 0.2f)
+        //{
+        //    x = transform.position.x + 0.2f;
+        //}
+
+        x = transform.position.x;
+
+        if (transform.position.y > y)
         {
-            effectiveSmoothing = 0f;
+            y = transform.position.y;
         }
-        transform.position = transform.position * smoothing + controlRb.worldCenterOfMass * (1f - smoothing); 
+        else if (transform.position.y < y - 0.2f)
+        {
+            y = transform.position.y + 0.2f;
+        }
+
+        z = transform.position.z;
+
+        camTarget.transform.position = new Vector3(x, y, z);
+
+        //if (transform.position.z >z)
+        //{
+        //    z = transform.position.z;
+        //}
+        //else if (transform.position.z < z - 0.2f)
+        //{
+        //    z = transform.position.z + 0.2f;
+        //}
+
+        //float effectiveSmoothing = smoothing;
+        //if ((controlRb.worldCenterOfMass - transform.position).magnitude > 1f)
+        //{
+        //    effectiveSmoothing = 0f;
+        //}
+        //transform.position = transform.position * smoothing + controlRb.worldCenterOfMass * (1f - smoothing); 
     }
 
     public void Freeze()

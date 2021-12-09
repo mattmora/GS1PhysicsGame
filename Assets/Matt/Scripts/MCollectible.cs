@@ -8,11 +8,19 @@ public class MCollectible : MonoBehaviour
 
     GameObject collectible;
 
+    public AudioClip collectSound;
+    AudioSource source;
+
+    public float pitch, volume;
+
     // Start is called before the first frame update
     void Start()
     {
         // Get the collectible which should be the first and only child
         collectible = transform.GetChild(0).gameObject;
+
+        source = gameObject.AddComponent<AudioSource>();
+        source.clip = collectSound;
     }
 
     // Update is called once per frame
@@ -40,6 +48,13 @@ public class MCollectible : MonoBehaviour
             }
             // Activate the hat matchiing the one just collected
             collectibles.Find(collectible.name).gameObject.SetActive(true);
+
+            CParticleScaleVelocity particles = other.gameObject.GetComponent<CParticleScaleVelocity>();
+            //particles.psCollect.Play();
+
+            source.volume = volume;
+            source.pitch = pitch;
+            source.Play();
         }
     }
 }

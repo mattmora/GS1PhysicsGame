@@ -20,10 +20,12 @@ public class CParticleScaleVelocity : MonoBehaviour
     public AudioClip jumpSound;
     AudioSource jumpSource;
 
-    public Vector3 savedNormal;
+    Vector3 savedNormal;
 
     //public bool touching;
     public HashSet<GameObject> touchingObjs;
+
+    bool initialCollision;
     
     // Start is called before the first frame update
     void Start()
@@ -96,17 +98,20 @@ public class CParticleScaleVelocity : MonoBehaviour
         touchingObjs.Add(collision.gameObject);
 
         float mag = 0f;
-        Vector3 tempVec = Vector3.zero;
-        foreach (var contact in collision.contacts)
-        {
-            if (mag < rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized))
-            {
-                tempVec = Vector3.Normalize(contact.normal);
-                mag = rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized);
-            }
-            //tempVec = contact.normal;
-            //mag = Mathf.Max(mag, rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized));
-        }
+        //Vector3 tempVec = Vector3.zero;
+        //foreach (var contact in collision.contacts)
+        //{
+        //    if (mag < rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized))
+        //    {
+        //        tempVec = Vector3.Normalize(contact.normal);
+        //        mag = rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized);
+        //    }
+        //    //tempVec = contact.normal;
+        //    //mag = Mathf.Max(mag, rb.velocity.magnitude * -Vector3.Dot(contact.normal, rb.velocity.normalized));
+        //}
+
+        Vector3 tempVec = collision.contacts[0].normal;
+        mag = rb.velocity.magnitude * -Vector3.Dot(tempVec, rb.velocity.normalized);
 
         //Debug.Log("Norm mag " + mag);
         //Debug.Log("normal: " + tempVec + " magnitute: " + tempVec.magnitude);
@@ -119,8 +124,15 @@ public class CParticleScaleVelocity : MonoBehaviour
         if (mag < 5.0f) return;
         if (im.freeze) return;
 
+        Debug.Log("hit");
         savedNormal = tempVec;
         psHit.Play();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Vector3 tempVec = collision.contacts[0].normal;
+        savedNormal = tempVec;
     }
 
     public void OnCollisionExit(Collision collision)
