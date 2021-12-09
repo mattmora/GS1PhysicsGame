@@ -973,6 +973,8 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  litMat: {fileID: 0}
+  skullMat: {fileID: 0}
   camTarget: {fileID: 0}
   skullStartPos: {x: 0, y: 0, z: 0}
   skullStartQuat: {x: 0, y: 0, z: 0, w: 0}
@@ -37050,8 +37052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skull: {fileID: 8565054229219006693}
   controlRb: {fileID: 8565054229219006695}
-  moveForceMagnitude: 150
-  torqueForceMagnitude: 50
+  moveForceMagnitude: 120
+  torqueForceMagnitude: 100
   hInput: 0
   vInput: 0
   hInputRaw: 0
@@ -37063,6 +37065,8 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  litMat: {fileID: 2100000, guid: 645af53bf963f9f4e897dda345b80e71, type: 2}
+  skullMat: {fileID: 2100000, guid: fc7f8d6832273da4b88c9e76a2ac9b5b, type: 2}
   camTarget: {fileID: 0}
   skullStartPos: {x: 0, y: 0, z: 0}
   skullStartQuat: {x: 0, y: 0, z: 0, w: 0}

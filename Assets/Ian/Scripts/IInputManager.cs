@@ -62,8 +62,8 @@ public class IInputManager : MonoBehaviour
         {
             case 1: break;
             case 2:
-                if (id == 1) enableOneBorder("right");
-                else enableOneBorder("left");
+                if (id == 1) enableOneBorder("bottom");
+                else enableOneBorder("top");
                 break;
             case 3:
                 if (id == 1)

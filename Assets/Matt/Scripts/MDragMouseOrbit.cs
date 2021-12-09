@@ -40,6 +40,11 @@ public class MDragMouseOrbit : MonoBehaviour
     {
         if (inputManager != null)
         {
+            if (PlayerInputManager.instance.playerCount == 2)
+            {
+                if (inputManager.id == 1) gameObject.GetComponent<Camera>().rect = new Rect(0f, 0.5f, 1f, 0.5f);
+                else if (inputManager.id == 2) gameObject.GetComponent<Camera>().rect = new Rect(0f, 0f, 1f, 0.5f);
+            }
             if (inputManager.id == 3 && PlayerInputManager.instance.playerCount == 3)
             {
                 //Debug.Log("3 players rn");
