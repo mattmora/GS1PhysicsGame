@@ -65,7 +65,8 @@ public class SongDisplay : MonoBehaviour
         GUI.skin = skin;
         if (showTitle)
         {
-            GUI.Box(new Rect((Screen.width / 2.0f) - 100, Screen.height - 60.0f, 200, 60.0f), songTitle);
+            GUI.Box(new Rect((Screen.width / 2.0f) - 450, Screen.height - 130.0f, 900, 100.0f), songTitle);
+            GUI.TextArea(new Rect((Screen.width / 2.0f) - 450, Screen.height - 130.0f, 900, 100.0f), songTitle);
         }
     }
 }
