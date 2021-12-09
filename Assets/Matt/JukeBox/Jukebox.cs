@@ -51,6 +51,8 @@ public class Jukebox : MonoBehaviour
 
     float songTimer;
     bool playing;
+
+    int titleFlag;
     void Awake()
     {
         if (tmp == null)
@@ -64,6 +66,7 @@ public class Jukebox : MonoBehaviour
             Destroy(gameObject.GetComponent<SongDisplay>());
             Destroy(this);
         }
+        titleFlag = 2;
     }
 
     void Start()
@@ -211,6 +214,11 @@ public class Jukebox : MonoBehaviour
     /// </summary>
     private void ShowTitle()
     {
+        if (titleFlag > 0) {
+            titleFlag--;
+            return;
+        }
+        Debug.Log("tried to show title");
         if (songChange != null && source.isPlaying)
         {
             songChange(songs[currentSong].ToString());

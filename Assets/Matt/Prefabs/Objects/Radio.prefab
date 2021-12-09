@@ -216,7 +216,7 @@ MonoBehaviour:
     title: Produk 29 [101]
   currentSong: -1
   random: 0
-  playOnStart: 0
+  playOnStart: 1
   musicVolume: 0.5
 --- !u!114 &6012524638015010932
 MonoBehaviour:

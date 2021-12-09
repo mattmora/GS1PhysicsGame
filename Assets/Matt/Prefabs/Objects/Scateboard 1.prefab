@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8157370641474922049}
   - component: {fileID: 8157370641473927247}
   - component: {fileID: 1112441863}
-  - component: {fileID: 1112441864}
   - component: {fileID: 1112441862}
+  - component: {fileID: 8839355354219901443}
   m_Layer: 0
   m_Name: Whell
   m_TagString: Untagged
@@ -100,19 +100,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &1112441864
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8157370641476033049}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.027878039
-  m_Center: {x: 0.0054807486, y: 0.00004318822, z: 0.000024063513}
 --- !u!59 &1112441862
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -149,6 +136,20 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &8839355354219901443
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157370641476033049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.027878052
+  m_Height: 0.1
+  m_Direction: 0
+  m_Center: {x: 0.005480631, y: 0.000043069012, z: 0.000024063505}
 --- !u!1 &8157370641476047945
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,8 +279,8 @@ GameObject:
   - component: {fileID: 8157370641475040005}
   - component: {fileID: 8157370641474344719}
   - component: {fileID: 1112432285}
-  - component: {fileID: 1112432286}
   - component: {fileID: 1112432284}
+  - component: {fileID: 4258285346123629990}
   m_Layer: 0
   m_Name: Whell 3
   m_TagString: Untagged
@@ -366,19 +367,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &1112432286
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8157370641476075655}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.027878039
-  m_Center: {x: 0.005480987, y: 0.00004318822, z: 0.000024063513}
 --- !u!59 &1112432284
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -415,6 +403,20 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &4258285346123629990
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157370641476075655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.027878052
+  m_Height: 0.1
+  m_Direction: 0
+  m_Center: {x: 0.005480631, y: 0.00004330743, z: 0.000022156157}
 --- !u!1 &8157370641476132101
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,8 +429,8 @@ GameObject:
   - component: {fileID: 8157370641475029729}
   - component: {fileID: 8157370641473919253}
   - component: {fileID: 1112343323}
-  - component: {fileID: 1112343324}
   - component: {fileID: 1112343322}
+  - component: {fileID: 3557887668389507774}
   m_Layer: 0
   m_Name: Whell 2
   m_TagString: Untagged
@@ -515,19 +517,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &1112343324
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8157370641476132101}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.027878039
-  m_Center: {x: 0.0054807486, y: 0.00004318822, z: 0.000024063513}
 --- !u!59 &1112343322
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -564,6 +553,20 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &3557887668389507774
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157370641476132101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.027878052
+  m_Height: 0.1
+  m_Direction: 0
+  m_Center: {x: 0.005480631, y: 0.000043307442, z: 0.00002406352}
 --- !u!1 &8157370641476137023
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,8 +579,8 @@ GameObject:
   - component: {fileID: 8157370641474946775}
   - component: {fileID: 8157370641474349283}
   - component: {fileID: 1112354341}
-  - component: {fileID: 1112354342}
   - component: {fileID: 1112354340}
+  - component: {fileID: 777453859797359290}
   m_Layer: 0
   m_Name: Whell 1
   m_TagString: Untagged
@@ -664,19 +667,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &1112354342
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8157370641476137023}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.027878039
-  m_Center: {x: 0.0054807486, y: 0.00004318822, z: 0.000024063513}
 --- !u!59 &1112354340
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -713,3 +703,17 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &777453859797359290
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157370641476137023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.027878052
+  m_Height: 0.1
+  m_Direction: 0
+  m_Center: {x: 0.005480631, y: 0.00004354586, z: 0.000022156171}

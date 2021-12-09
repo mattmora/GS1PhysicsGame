@@ -23,6 +23,8 @@ public class MDragMouseOrbit : MonoBehaviour
 
     Transform realTarget;
 
+    public GameObject titleCanvas;
+
     void Start()
     {
         Vector3 angles = transform.eulerAngles;
@@ -35,6 +37,8 @@ public class MDragMouseOrbit : MonoBehaviour
         }
 
         inputManager = transform.parent.GetChild(0).gameObject.GetComponent<IInputManager>();
+
+        
     }
     void Update()
     {
@@ -53,6 +57,8 @@ public class MDragMouseOrbit : MonoBehaviour
                 //gameObject.GetComponent<Camera>().rect = rect;
             }
             else { }
+
+            if (titleCanvas != null) titleCanvas.SetActive(false);
         }
 
         if (target != null)

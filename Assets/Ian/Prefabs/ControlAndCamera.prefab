@@ -759,6 +759,7 @@ MonoBehaviour:
   distanceMax: 10
   smoothTime: 100
   inputManager: {fileID: 3403616975308291840}
+  titleCanvas: {fileID: 0}
 --- !u!114 &5866676534553040023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +781,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5866676534553040044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 392b8ca8b11728f4c95479f83b939a4a, type: 3}
   m_Name: 
