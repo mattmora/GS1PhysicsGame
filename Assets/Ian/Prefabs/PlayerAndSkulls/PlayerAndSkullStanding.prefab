@@ -973,6 +973,11 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  litMat: {fileID: 0}
+  skullMat: {fileID: 0}
+  camTarget: {fileID: 0}
+  skullStartPos: {x: 0, y: 0, z: 0}
+  skullStartQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!199 &3269334195575276749
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5767,7 +5772,6 @@ MonoBehaviour:
   bone: {fileID: 0}
   hitSounds: []
   jumpSound: {fileID: 0}
-  savedNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &2512821158409091245
 GameObject:
   m_ObjectHideFlags: 0
@@ -37047,8 +37051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skull: {fileID: 8565054229219006693}
   controlRb: {fileID: 8565054229219006695}
-  moveForceMagnitude: 150
-  torqueForceMagnitude: 50
+  moveForceMagnitude: 120
+  torqueForceMagnitude: 100
   hInput: 0
   vInput: 0
   hInputRaw: 0
@@ -37060,6 +37064,11 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  litMat: {fileID: 2100000, guid: 645af53bf963f9f4e897dda345b80e71, type: 2}
+  skullMat: {fileID: 2100000, guid: fc7f8d6832273da4b88c9e76a2ac9b5b, type: 2}
+  camTarget: {fileID: 0}
+  skullStartPos: {x: 0, y: 0, z: 0}
+  skullStartQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!199 &4301701955883237162
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -42144,7 +42153,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2eb588e1c8e4a74e96c37c46cb445b5, type: 3}
   - {fileID: 8300000, guid: d74e01ee36b92e44a950f687a2cfabee, type: 3}
   jumpSound: {fileID: 8300000, guid: 5fc0dd304f969064ba0261e6e65dcbfa, type: 3}
-  savedNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &8688668677665829363
 GameObject:
   m_ObjectHideFlags: 0
