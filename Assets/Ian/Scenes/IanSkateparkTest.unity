@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32700533, g: 0.28155023, b: 0.41661528, a: 1}
+  m_IndirectSpecularColor: {r: 0.32708964, g: 0.28166518, b: 0.41668943, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1378,6 +1378,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5311141844511568847, guid: bbf38bb47d3388d4ca7cf97c5963b58f, type: 3}
+      propertyPath: pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311141844511568847, guid: bbf38bb47d3388d4ca7cf97c5963b58f, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b7016767b1934540b23a299c6773449, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbf38bb47d3388d4ca7cf97c5963b58f, type: 3}
 --- !u!43 &188492510
@@ -3662,6 +3670,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8734915458949279397, guid: aa049f89172d1a147a829a60bd42391c, type: 3}
+      propertyPath: pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734915458949279397, guid: aa049f89172d1a147a829a60bd42391c, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 15de5a5213dedc34c905d15b7626f1fd, type: 3}
     - target: {fileID: 8734915458949279399, guid: aa049f89172d1a147a829a60bd42391c, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -16021,6 +16037,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectibleCowboyHat Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2281183900532914492, guid: 1dff89106087b5140902ed5550d6d348, type: 3}
+      propertyPath: pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281183900532914492, guid: 1dff89106087b5140902ed5550d6d348, type: 3}
+      propertyPath: volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281183900532914492, guid: 1dff89106087b5140902ed5550d6d348, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3455a9188a1dc724f98a98b83411b474, type: 3}
     - target: {fileID: 2281183900532914494, guid: 1dff89106087b5140902ed5550d6d348, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -16122,6 +16150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2845028820183782219, guid: 19f0e5c048cab274da19db17c73e2ac7, type: 3}
+      propertyPath: collectSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 414ae85b83945c946bd7597ce8c8c312, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f0e5c048cab274da19db17c73e2ac7, type: 3}
 --- !u!1 &1974353164
