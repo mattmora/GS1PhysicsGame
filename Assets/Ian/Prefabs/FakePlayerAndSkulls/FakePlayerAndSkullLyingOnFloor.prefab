@@ -7049,6 +7049,11 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  litMat: {fileID: 0}
+  skullMat: {fileID: 0}
+  camTarget: {fileID: 0}
+  skullStartPos: {x: 0, y: 0, z: 0}
+  skullStartQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4741797698743499637
 GameObject:
   m_ObjectHideFlags: 0
@@ -7930,7 +7935,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -0.01, z: -0.15}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00047127358, y: 0.0006479053, z: 0.0034144078}
+  m_ConnectedAnchor: {x: -0.0004714524, y: 0.0006479053, z: 0.003414527}
   m_UseSpring: 1
   m_Spring:
     spring: 0.05

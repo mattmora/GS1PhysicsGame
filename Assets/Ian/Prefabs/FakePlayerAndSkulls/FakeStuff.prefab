@@ -169,6 +169,11 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  litMat: {fileID: 0}
+  skullMat: {fileID: 0}
+  camTarget: {fileID: 0}
+  skullStartPos: {x: 0, y: 0, z: 0}
+  skullStartQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &984802366890935012
 GameObject:
   m_ObjectHideFlags: 0
@@ -12365,7 +12370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6555095744213915162
 Transform:
   m_ObjectHideFlags: 0
