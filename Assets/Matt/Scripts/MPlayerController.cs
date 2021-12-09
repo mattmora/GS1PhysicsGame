@@ -213,10 +213,13 @@ public class MPlayerController : MonoBehaviour
         //torque = Vector3.ClampMagnitude(torque, 1f) * -torqueForceMagnitude * Time.fixedDeltaTime;
         //controlRb.AddTorque(torque);
 
+        // if (vInput < 0.01f && hInput < 0.01f) return;
+
         Vector3 face = (vInput * transform.forward + hInput * transform.right);
+        // face = new Vector3(face.x, -skull.connectionPoints[0].transform.up.y, face.z);
         var rot = Quaternion.FromToRotation(-skull.connectionPoints[0].transform.up, face);
         // Debug.Log(new Vector3(rot.x, rot.y, rot.z));
-        controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce * 2);
+        controlRb.AddTorque(new Vector3(0, rot.y, 0) * uprightForce * 2);
         //controlRb.AddForce(Vector3.up * secretForce);
     }
 
