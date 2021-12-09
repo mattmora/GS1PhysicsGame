@@ -11569,8 +11569,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skull: {fileID: 4996272126102310615}
   controlRb: {fileID: 4996272126102310613}
-  moveForceMagnitude: 150
-  torqueForceMagnitude: 50
+  moveForceMagnitude: 120
+  torqueForceMagnitude: 100
   hInput: 0
   vInput: 0
   hInputRaw: 0
@@ -11582,6 +11582,9 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   isfrozen: 0
   secretForce: 0
+  camTarget: {fileID: 0}
+  skullStartPos: {x: 0, y: 0, z: 0}
+  skullStartQuat: {x: 0, y: 0, z: 0, w: 0}
 --- !u!199 &6607768912986883370
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -26591,7 +26594,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f2eb588e1c8e4a74e96c37c46cb445b5, type: 3}
   - {fileID: 8300000, guid: d74e01ee36b92e44a950f687a2cfabee, type: 3}
   jumpSound: {fileID: 8300000, guid: 5fc0dd304f969064ba0261e6e65dcbfa, type: 3}
-  savedNormal: {x: 0, y: 0, z: 0}
 --- !u!1 &5129587029726806815
 GameObject:
   m_ObjectHideFlags: 0
