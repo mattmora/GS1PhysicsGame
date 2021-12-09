@@ -31,6 +31,9 @@ public class MPlayerController : MonoBehaviour
 
     Vector3 followVelocity;
 
+    public Material litMat;
+    public Material skullMat;
+
     [HideInInspector]
     public GameObject camTarget;
     public Vector3 skullStartPos;
@@ -104,6 +107,7 @@ public class MPlayerController : MonoBehaviour
         //if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift)) 
         if (isfrozen)
         {
+            changeMat(litMat);
             //if (Input.GetKey(KeyCode.Space))
             if (inputManager.jump)
             {
@@ -119,6 +123,7 @@ public class MPlayerController : MonoBehaviour
         }
         else
         {
+            changeMat(skullMat);
             Roll();
         }
     }
@@ -213,5 +218,11 @@ public class MPlayerController : MonoBehaviour
         // Debug.Log(new Vector3(rot.x, rot.y, rot.z));
         controlRb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce * 2);
         //controlRb.AddForce(Vector3.up * secretForce);
+    }
+
+    public void changeMat(Material m)
+    {
+        transform.parent.Find("skull").gameObject.GetComponent<MeshRenderer>().material = m;
+        transform.parent.Find("skull").Find("jaw").gameObject.GetComponent<MeshRenderer>().material = m;
     }
 }
