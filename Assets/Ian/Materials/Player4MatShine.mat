@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _InkSize: 40
+    - _InkSize: 30
     - _ToneBlend: 16
     - _ToneSize: 2.39
     m_Colors:

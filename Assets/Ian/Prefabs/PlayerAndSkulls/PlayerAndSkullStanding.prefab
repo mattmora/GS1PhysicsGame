@@ -37052,8 +37052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skull: {fileID: 8565054229219006693}
   controlRb: {fileID: 8565054229219006695}
-  moveForceMagnitude: 120
-  torqueForceMagnitude: 100
+  moveForceMagnitude: 130
+  torqueForceMagnitude: 80
   hInput: 0
   vInput: 0
   hInputRaw: 0
